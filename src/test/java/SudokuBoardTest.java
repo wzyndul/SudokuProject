@@ -6,7 +6,8 @@ class SudokuBoardTest {
 
     @Test
     public void getSetMethodsTest() {
-        SudokuBoard sudokuBoard = new SudokuBoard();
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.set(0, 0, 9);
         assertEquals(sudokuBoard.get(0, 0), 9);
     }
@@ -14,7 +15,8 @@ class SudokuBoardTest {
 
     @Test
     void differentNumbers() {
-        SudokuBoard sudokuBoard = new SudokuBoard();
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
         int[][] table = new int[9][9];
         for (int i = 0; i < 9; i++) {

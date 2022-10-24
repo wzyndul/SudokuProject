@@ -6,9 +6,9 @@ class BacktrackingSudokuSolverTest {
 
     @Test
     void solve() {
-        SudokuBoard sudokuBoard = new SudokuBoard();
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-        backtrackingSudokuSolver.solve(sudokuBoard);
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
         for (int i = 0; i < 9; i++) {
             int sumRow = 0;
             int sumCol = 0;

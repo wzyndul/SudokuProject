@@ -2,10 +2,10 @@ public class SudokuBoard {
     private final int size = 9;
     private int[][] board = new int[size][size];
 
-    private final BacktrackingSudokuSolver sudokuSolver;
+    private final SudokuSolver sudokuSolver;
 
-    SudokuBoard() {
-        sudokuSolver = new BacktrackingSudokuSolver();
+    SudokuBoard(SudokuSolver solver) {
+        sudokuSolver = solver;
     }
 
     public int get(int x, int y) {
@@ -18,9 +18,10 @@ public class SudokuBoard {
 
     public void solveGame() {
         sudokuSolver.solve(this);
+        // checkBoard();
     }
 
-    /* public boolean checkBoard() {
+    /* public boolean checkBoard() {     //to moglo byc prywatne i wywolywane po solviez
 
         for (int c = 0; c < 9; c++) {
             for (int r = 0; r < 9; r++) {
