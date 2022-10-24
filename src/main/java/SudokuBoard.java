@@ -20,7 +20,7 @@ public class SudokuBoard {
         sudokuSolver.solve(this);
     }
 
-    public boolean checkBoard() {
+    /* public boolean checkBoard() {
 
         for (int c = 0; c < 9; c++) {
             for (int r = 0; r < 9; r++) {
@@ -54,5 +54,5 @@ public class SudokuBoard {
             }
         }
         return true;
-    }
+    }*/
 }

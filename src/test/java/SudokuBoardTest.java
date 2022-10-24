@@ -34,7 +34,7 @@ class SudokuBoardTest {
         assertNotEquals(81, notEqual);
     }
 
-    @Test
+   /* @Test
     void chceckBoardTest() {
         SudokuBoard sudoku = new SudokuBoard();
         assertFalse(sudoku.checkBoard());
@@ -49,7 +49,7 @@ class SudokuBoardTest {
 
         sudoku.solveGame();
         assertTrue(sudoku.checkBoard());
-    }
+    }*/
 
 
 }
