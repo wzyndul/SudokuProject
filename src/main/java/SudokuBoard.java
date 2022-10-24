@@ -2,7 +2,7 @@ public class SudokuBoard {
     private final int size = 9;
     private int[][] board = new int[size][size];
 
-    private BacktrackingSudokuSolver sudokuSolver;
+    private final BacktrackingSudokuSolver sudokuSolver;
 
     SudokuBoard() {
         sudokuSolver = new BacktrackingSudokuSolver();
