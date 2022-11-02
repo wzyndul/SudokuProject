@@ -1,4 +1,4 @@
-public class SudokRow extends SudokuField {
+public class SudokuRow extends SudokuField {
     private SudokuField[] row = new SudokuField[9];
 
     public boolean verify() {
@@ -7,10 +7,7 @@ public class SudokRow extends SudokuField {
                 if (row[i].getFieldValue() == row[i+1].getFieldValue())
                     return false;
             }
-
         }
-
         return true;
-
     }
 }

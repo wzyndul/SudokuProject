@@ -6,6 +6,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
     private final int size = 9;
 
 
+
     @Override
     public void solve(SudokuBoard board) {
         clear(board);

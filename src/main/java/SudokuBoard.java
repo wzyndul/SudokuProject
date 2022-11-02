@@ -1,6 +1,23 @@
 public class SudokuBoard {
     private final int size = 9;
-    private int[][] board = new int[size][size];
+    private SudokuField[][] board = new SudokuField[9][9];
+//    public SudokuBox getBox(int x, int y){
+//        return;
+//    }
+    public SudokuRow getRow(int y){
+        SudokuRow row = new SudokuRow();
+        for(int i=0;i<9;i++){
+            row.setFieldValue(board[y][i].getFieldValue());
+        }
+        return row;
+    }
+    public SudokuColumn getColumn(int x){
+        SudokuColumn column = new SudokuColumn();
+        for(int i=0;i<9;i++){
+            column.setFieldValue(board[i][x].getFieldValue());
+        }
+        return column;
+    }
 
     private final SudokuSolver sudokuSolver;
 
