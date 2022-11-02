@@ -20,36 +20,36 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         }
     }
 
-    private boolean checkRow(int row, int number, SudokuBoard board) {
-        for (int i = 0; i < size; i++) {
-            if (board.get(row, i) == number) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkCol(int col, int number, SudokuBoard board) {
-        for (int i = 0; i < size; i++) {
-            if (board.get(i, col) == number) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkBox(int row, int col, int number, SudokuBoard board) {
-        int rowStart = row - row % 3;
-        int colStart = col - col % 3;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board.get(rowStart + i, colStart + j) == number) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+//    private boolean checkRow(int row, int number, SudokuBoard board) {
+//        for (int i = 0; i < size; i++) {
+//            if (board.get(row, i) == number) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    private boolean checkCol(int col, int number, SudokuBoard board) {
+//        for (int i = 0; i < size; i++) {
+//            if (board.get(i, col) == number) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    private boolean checkBox(int row, int col, int number, SudokuBoard board) {
+//        int rowStart = row - row % 3;
+//        int colStart = col - col % 3;
+//        for (int i = 0; i < 3; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                if (board.get(rowStart + i, colStart + j) == number) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
 
     private int[] randomList() {
         ArrayList<Integer> list = new ArrayList();
