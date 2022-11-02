@@ -1,5 +1,10 @@
-public class SudokuRow extends SudokuField {
-    private SudokuField[] row = new SudokuField[9];
+public class SudokuRow extends SudokuStructure {
+    private SudokuField[] row;
+
+    SudokuRow(SudokuField[] x) {
+        super(x);
+        this.row = x;
+    }
 
     public boolean verify() {
         for (int j = 0; j < 9; j++) {

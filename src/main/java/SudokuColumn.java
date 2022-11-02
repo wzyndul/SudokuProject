@@ -1,5 +1,10 @@
-public class SudokuColumn extends SudokuField {
-    private SudokuField[] column = new SudokuField[9];
+public class SudokuColumn extends SudokuStructure {
+    private SudokuField[] column;
+
+    SudokuColumn(SudokuField[] x) {
+        super(x);
+        this.column = x;
+    }
 
     public boolean verify() {
             for (int j = 0; j < 9; j++) {
