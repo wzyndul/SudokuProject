@@ -3,6 +3,6 @@ public class Main {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
         board.solveGame();
-        board.Print();
+        board.print();
     }
 }

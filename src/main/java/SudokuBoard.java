@@ -8,7 +8,7 @@ public class SudokuBoard {
     SudokuBoard(SudokuSolver solver) {
         sudokuSolver = solver;
         for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) {    // nie wiem czy tam trzeba / mozna ale inicjalizuje cala tablice
+            for (int j = 0; j < size; ++j) {
                 board[i][j] = new SudokuField();
             }
         }
@@ -93,7 +93,7 @@ public class SudokuBoard {
         return true;
     }*/
 
-    public void Print() {
+    public void print() {
 
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
