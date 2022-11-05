@@ -25,7 +25,7 @@ public class SudokuBoard {
 
     public void solveGame() {
         sudokuSolver.solve(this);
-        // checkBoard();
+        checkBoard();
     }
 
     public SudokuRow getRow(int y) {
@@ -57,7 +57,8 @@ public class SudokuBoard {
         }
         return new SudokuBox(table);
     }
-    /* public boolean checkBoard() {     //to moglo byc prywatne i wywolywane po solviez
+
+    private boolean checkBoard() {
 
         for (int c = 0; c < 9; c++) {
             for (int r = 0; r < 9; r++) {
@@ -76,14 +77,14 @@ public class SudokuBoard {
 
                 int posCol = (c / 3) * 3;
                 int posRow = (r / 3) * 3;
-                int num = board[c][r];
+                int num = board[c][r].getFieldValue();
 
                 for (int i = posCol; i < 3 + posCol; i++) {
                     for (int j = posRow; j < 3 + posRow; j++) {
                         if (i == c && j == r) {
                             continue;
                         }
-                        if (board[i][j] == num) {
+                        if (board[i][j].getFieldValue() == num) {
                             return false;
                         }
                     }
@@ -91,7 +92,7 @@ public class SudokuBoard {
             }
         }
         return true;
-    }*/
+    }
 
     public void print() {
 
@@ -103,4 +104,6 @@ public class SudokuBoard {
             System.out.println();
         }
     }
+
+
 }
