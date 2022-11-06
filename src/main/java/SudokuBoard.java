@@ -79,38 +79,4 @@ public class SudokuBoard {
         return true;
     }
 }
-//    public boolean checkBoard() {  //stary checkoard
-//
-//        for (int c = 0; c < 9; c++) {
-//            for (int r = 0; r < 9; r++) {
-//
-//                for (int i = r + 1; i < 9; i++) {
-//                    if (board[c][r] == board[c][i]) {
-//                        return false;
-//                    }
-//                }
-//
-//                for (int i = c + 1; i < 9; i++) {
-//                    if (board[c][r] == board[i][r]) {
-//                        return false;
-//                    }
-//                }
-//
-//                int posCol = (c / 3) * 3;
-//                int posRow = (r / 3) * 3;
-//                int num = board[c][r].getFieldValue();
-//
-//                for (int i = posCol; i < 3 + posCol; i++) {
-//                    for (int j = posRow; j < 3 + posRow; j++) {
-//                        if (i == c && j == r) {
-//                            continue;
-//                        }
-//                        if (board[i][j].getFieldValue() == num) {
-//                            return false;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return true;
-//    }
+

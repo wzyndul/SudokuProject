@@ -13,7 +13,7 @@ class SudokuBoardTest {
     }
 
 
-    @Test   // TEN TEST MOZNA ZMIENIC ZEBY SZYBCIEJ Z NIEGO WYCHODZIC
+    @Test
     void differentNumbers() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
@@ -25,31 +25,39 @@ class SudokuBoardTest {
             }
         }
         sudokuBoard.solveGame();
+        int notEqual = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (sudokuBoard.get(i, j) == table[i][j]) {
-                    return;
+                if (sudokuBoard.get(i, j) != table[i][j]) {
+                    notEqual++;
                 }
             }
         }
+        assertNotEquals(81, notEqual);
     }
 
-   /* @Test          //stary test checkboarda
-    void chceckBoardTest() {
-        SudokuBoard sudoku = new SudokuBoard();
-        assertFalse(sudoku.checkBoard());
+    @Test
+    public void getRowTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
+        assertNotNull(board.getRow(5));
+    }
 
-        sudoku.set(1, 0, 1);
-        sudoku.set(0, 0, 1);
-        assertFalse(sudoku.checkBoard());
+    @Test
+    public void getColumnTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
+        board.solveGame();
+        assertNotNull(board.getColumn(3));
+    }
 
-        sudoku.set(1, 0, 0);
-        sudoku.set(1, 1, 1);
-        assertFalse(sudoku.checkBoard());
-
-        sudoku.solveGame();
-        assertTrue(sudoku.checkBoard());
-    }*/
+    @Test
+    public void getBoxTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
+        board.solveGame();
+        assertNotNull(board.getBox(1, 2));
+    }
 
 
 }
