@@ -1,6 +1,6 @@
 public class SudokuBoard {
     private final int size = 9;
-    private SudokuField[][] board = new SudokuField[9][9];
+    private SudokuField[][] board = new SudokuField[size][size];
 
 
     private final SudokuSolver sudokuSolver;
@@ -29,7 +29,7 @@ public class SudokuBoard {
 
     public SudokuRow getRow(int y) {
         SudokuField[] table = new SudokuField[9];
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < size; i++) {
             table[i] = board[y][i];
         }
         return new SudokuRow(table);
@@ -37,14 +37,14 @@ public class SudokuBoard {
 
     public SudokuColumn getColumn(int x) {
         SudokuField[] table = new SudokuField[9];
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < size; i++) {
             table[i] = board[i][x];
         }
         return new SudokuColumn(table);
     }
 
     public SudokuBox getBox(int x, int y) {
-        SudokuField[] table = new SudokuField[9];
+        SudokuField[] table = new SudokuField[size];
         int rowStart = x - x % 3;
         int colStart = y - y % 3;
         int index = 0;
@@ -60,7 +60,7 @@ public class SudokuBoard {
     private boolean checkBoard() {
         int rowBox = 0;
         int colBox = 0;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < size; i++) {
             if (!getColumn(i).verify()) {
                 return false;
             }
@@ -71,7 +71,7 @@ public class SudokuBoard {
                 return false;
             }
             colBox += 3;
-            if (colBox == 9) {
+            if (colBox == size) {
                 colBox = 0;
                 rowBox += 3;
             }
