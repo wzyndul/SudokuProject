@@ -1,5 +1,6 @@
 public class SudokuBoard {
     private final int size = 9;
+
     private SudokuField[][] board = new SudokuField[size][size];
 
 
@@ -24,7 +25,6 @@ public class SudokuBoard {
 
     public void solveGame() {
         sudokuSolver.solve(this);
-        // checkBoard();  tak jakos chyba trzeba to ogarnac
     }
 
     public SudokuRow getRow(int y) {
@@ -57,7 +57,7 @@ public class SudokuBoard {
         return new SudokuBox(table);
     }
 
-    private boolean checkBoard() {
+    public boolean checkBoard() {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < size; i++) {
@@ -78,5 +78,7 @@ public class SudokuBoard {
         }
         return true;
     }
+
+
 }
 

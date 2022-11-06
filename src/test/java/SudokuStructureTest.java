@@ -17,15 +17,5 @@ class SudokuStructureTest {
         structure[8].setFieldValue(1);
         assertFalse(sudokuRow.verify());
 
-        SudokuColumn column = new SudokuColumn(structure);
-        assertTrue(column.verify());
-        structure[8].setFieldValue(1);
-        assertFalse(column.verify());
-
-
-        SudokuBox box = new SudokuBox(structure);
-        assertTrue(box.verify());
-        structure[8].setFieldValue(1);
-        assertFalse(box.verify());
     }
 }

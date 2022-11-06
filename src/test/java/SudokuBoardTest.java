@@ -59,5 +59,24 @@ class SudokuBoardTest {
         assertNotNull(board.getBox(1, 2));
     }
 
+    @Test
+    public void checkBoardTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
+        assertTrue(sudokuBoard.checkBoard());
 
+        int temp = sudokuBoard.get(0, 1);
+        sudokuBoard.set(0, 1, sudokuBoard.get(0, 0));
+        assertFalse(sudokuBoard.checkBoard());
+        sudokuBoard.set(0, 1, temp);
+
+        temp = sudokuBoard.get(1, 0);
+        sudokuBoard.set(1, 0, sudokuBoard.get(0, 0));
+        assertFalse(sudokuBoard.checkBoard());
+        sudokuBoard.set(1, 0, temp);
+
+        sudokuBoard.set(1, 1, sudokuBoard.get(0, 0));
+        assertFalse(sudokuBoard.checkBoard());
+    }
 }
