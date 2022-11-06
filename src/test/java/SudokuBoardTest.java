@@ -13,7 +13,7 @@ class SudokuBoardTest {
     }
 
 
-    @Test
+    @Test   // TEN TEST MOZNA ZMIENIC ZEBY SZYBCIEJ Z NIEGO WYCHODZIC
     void differentNumbers() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
@@ -36,7 +36,7 @@ class SudokuBoardTest {
         assertNotEquals(81, notEqual);
     }
 
-   /* @Test
+   /* @Test          //stary test checkboarda
     void chceckBoardTest() {
         SudokuBoard sudoku = new SudokuBoard();
         assertFalse(sudoku.checkBoard());

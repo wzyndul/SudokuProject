@@ -1,9 +1,18 @@
 public abstract class SudokuStructure {
-    private SudokuField[] structure;   //czy to tak ma byc (?)
+    protected SudokuField[] structure;
 
-    SudokuStructure(SudokuField[] x) {
-        this.structure = x;
+    SudokuStructure(SudokuField[] fields) {
+        this.structure = fields;
     }
 
-    public abstract boolean verify();
+    public boolean verify() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = i + 1; j < 9; j++) {
+                if (structure[i].getFieldValue() == structure[j].getFieldValue()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

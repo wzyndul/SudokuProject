@@ -12,7 +12,6 @@ public class SudokuBoard {
                 board[i][j] = new SudokuField();
             }
         }
-
     }
 
     public int get(int x, int y) {
@@ -25,7 +24,7 @@ public class SudokuBoard {
 
     public void solveGame() {
         sudokuSolver.solve(this);
-        checkBoard();
+        // checkBoard();  tak jakos chyba trzeba to ogarnac
     }
 
     public SudokuRow getRow(int y) {
@@ -48,62 +47,70 @@ public class SudokuBoard {
         SudokuField[] table = new SudokuField[9];
         int rowStart = x - x % 3;
         int colStart = y - y % 3;
-        int k = 0;
+        int index = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                table[k] = board[rowStart + i][colStart + j];
-                k++;
+                table[index] = board[rowStart + i][colStart + j];
+                index++;
             }
         }
         return new SudokuBox(table);
     }
 
     private boolean checkBoard() {
-
-        for (int c = 0; c < 9; c++) {
-            for (int r = 0; r < 9; r++) {
-
-                for (int i = r + 1; i < 9; i++) {
-                    if (board[c][r] == board[c][i]) {
-                        return false;
-                    }
-                }
-
-                for (int i = c + 1; i < 9; i++) {
-                    if (board[c][r] == board[i][r]) {
-                        return false;
-                    }
-                }
-
-                int posCol = (c / 3) * 3;
-                int posRow = (r / 3) * 3;
-                int num = board[c][r].getFieldValue();
-
-                for (int i = posCol; i < 3 + posCol; i++) {
-                    for (int j = posRow; j < 3 + posRow; j++) {
-                        if (i == c && j == r) {
-                            continue;
-                        }
-                        if (board[i][j].getFieldValue() == num) {
-                            return false;
-                        }
-                    }
-                }
+        int rowBox = 0;
+        int colBox = 0;
+        for (int i = 0; i < 9; i++) {
+            if (!getColumn(i).verify()) {
+                return false;
+            }
+            if (!getRow(i).verify()) {
+                return false;
+            }
+            if (!getBox(rowBox, colBox).verify()) {
+                return false;
+            }
+            colBox += 3;
+            if (colBox == 9) {
+                colBox = 0;
+                rowBox += 3;
             }
         }
         return true;
     }
-
-    public void print() {
-
-        for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) {
-                System.out.print(board[i][j].getFieldValue());
-                System.out.print("\t");
-            }
-            System.out.println();
-        }
-    }
-
-
 }
+//    public boolean checkBoard() {  //stary checkoard
+//
+//        for (int c = 0; c < 9; c++) {
+//            for (int r = 0; r < 9; r++) {
+//
+//                for (int i = r + 1; i < 9; i++) {
+//                    if (board[c][r] == board[c][i]) {
+//                        return false;
+//                    }
+//                }
+//
+//                for (int i = c + 1; i < 9; i++) {
+//                    if (board[c][r] == board[i][r]) {
+//                        return false;
+//                    }
+//                }
+//
+//                int posCol = (c / 3) * 3;
+//                int posRow = (r / 3) * 3;
+//                int num = board[c][r].getFieldValue();
+//
+//                for (int i = posCol; i < 3 + posCol; i++) {
+//                    for (int j = posRow; j < 3 + posRow; j++) {
+//                        if (i == c && j == r) {
+//                            continue;
+//                        }
+//                        if (board[i][j].getFieldValue() == num) {
+//                            return false;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return true;
+//    }
