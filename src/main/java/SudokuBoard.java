@@ -30,7 +30,8 @@ public class SudokuBoard {
     public SudokuRow getRow(int y) {
         SudokuField[] table = new SudokuField[9];
         for (int i = 0; i < size; i++) {
-            table[i] = board[y][i];
+            table[i] = new SudokuField();
+            table[i].setFieldValue(board[y][i].getFieldValue());
         }
         return new SudokuRow(table);
     }
@@ -38,7 +39,8 @@ public class SudokuBoard {
     public SudokuColumn getColumn(int x) {
         SudokuField[] table = new SudokuField[9];
         for (int i = 0; i < size; i++) {
-            table[i] = board[i][x];
+            table[i] = new SudokuField();
+            table[i].setFieldValue(board[i][x].getFieldValue());
         }
         return new SudokuColumn(table);
     }
@@ -50,14 +52,15 @@ public class SudokuBoard {
         int index = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                table[index] = board[rowStart + i][colStart + j];
+                table[index] = new SudokuField();
+                table[index].setFieldValue(board[rowStart + i][colStart + j].getFieldValue());
                 index++;
             }
         }
         return new SudokuBox(table);
     }
 
-    public boolean checkBoard() {
+     boolean checkBoard() {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < size; i++) {

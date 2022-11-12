@@ -36,28 +36,6 @@ class SudokuBoardTest {
         assertNotEquals(81, notEqual);
     }
 
-    @Test
-    public void getRowTest() {
-        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
-        assertNotNull(board.getRow(5));
-    }
-
-    @Test
-    public void getColumnTest() {
-        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
-        board.solveGame();
-        assertNotNull(board.getColumn(3));
-    }
-
-    @Test
-    public void getBoxTest() {
-        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-        SudokuBoard board = new SudokuBoard(backtrackingSudokuSolver);
-        board.solveGame();
-        assertNotNull(board.getBox(1, 2));
-    }
 
     @Test
     public void checkBoardTest() {
