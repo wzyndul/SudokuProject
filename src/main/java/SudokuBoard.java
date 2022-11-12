@@ -1,3 +1,5 @@
+
+
 public class SudokuBoard {
     private final int size = 9;
 
@@ -60,7 +62,7 @@ public class SudokuBoard {
         return new SudokuBox(table);
     }
 
-     boolean checkBoard() {
+    boolean checkBoard() {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < size; i++) {
