@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SudokuFieldsTest {
 
     @Test
-    public void verifyTest() {
+    public void setGetFieldValueTest() {
         SudokuField sudokufield = new SudokuField();
         sudokufield.setFieldValue(8);
         assertEquals(sudokufield.getFieldValue(),8);

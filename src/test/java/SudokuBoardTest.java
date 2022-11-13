@@ -36,7 +36,6 @@ class SudokuBoardTest {
         assertNotEquals(81, notEqual);
     }
 
-
     @Test
     public void checkBoardTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
