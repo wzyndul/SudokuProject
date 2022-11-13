@@ -26,7 +26,10 @@ public class SudokuBoard {
     }
 
     public void solveGame() {
+
         sudokuSolver.solve(this);
+        checkBoard();         //w przyszlsoci mozemy dodac tutaj jakies sprawdzenie
+        //czy wszystko jest ok (ale zawsze bedzie) bo solve poprawnie wypelnia
     }
 
     public SudokuRow getRow(int y) {
@@ -62,7 +65,7 @@ public class SudokuBoard {
         return new SudokuBox(table);
     }
 
-    boolean checkBoard() {
+    private boolean checkBoard() {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < size; i++) {
@@ -83,7 +86,5 @@ public class SudokuBoard {
         }
         return true;
     }
-
-
 }
 

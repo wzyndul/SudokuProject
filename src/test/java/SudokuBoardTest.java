@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuBoardTest {
@@ -37,23 +40,25 @@ class SudokuBoardTest {
     }
 
     @Test
-    public void checkBoardTest() {
+     void checkBoardTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
-        assertTrue(sudokuBoard.checkBoard());
+        Method method = SudokuBoard.class.getDeclaredMethod("checkBoard");
+        method.setAccessible(true);
+        assertTrue((Boolean) method.invoke(sudokuBoard));
 
         int temp = sudokuBoard.get(0, 1);
         sudokuBoard.set(0, 1, sudokuBoard.get(0, 0));
-        assertFalse(sudokuBoard.checkBoard());
+        assertFalse((Boolean) method.invoke(sudokuBoard));
         sudokuBoard.set(0, 1, temp);
 
         temp = sudokuBoard.get(1, 0);
         sudokuBoard.set(1, 0, sudokuBoard.get(0, 0));
-        assertFalse(sudokuBoard.checkBoard());
+        assertFalse((Boolean) method.invoke(sudokuBoard));
         sudokuBoard.set(1, 0, temp);
 
         sudokuBoard.set(1, 1, sudokuBoard.get(0, 0));
-        assertFalse(sudokuBoard.checkBoard());
+        assertFalse((Boolean) method.invoke(sudokuBoard));
     }
 }
