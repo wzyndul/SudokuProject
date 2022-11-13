@@ -52,19 +52,15 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         return true;
     }
 
-    private int[] randomList() {
+    private ArrayList<Integer> randomList() {
         ArrayList<Integer> list = new ArrayList();
 
         for (int i = 1; i <= size; ++i) {
             list.add(i);
         }
-
         Collections.shuffle(list);
-        int[] result = new int[size];
-        for (int i = 0; i < size; ++i) {
-            result[i] = list.get(i);
-        }
-        return result;
+
+        return list;
     }
 
     private boolean fillSudoku(int i, int j, SudokuBoard board) {
@@ -75,11 +71,11 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
             j = 0;
             i++;
         }
-        int[] numberTab = randomList();
+        ArrayList<Integer> numberList = randomList();
         for (int k = 0; k < size; k++) {
-            if (checkRow(i, numberTab[k], board) && checkCol(j, numberTab[k],
-                    board) && checkBox(i, j, numberTab[k], board)) {
-                board.set(i, j, numberTab[k]);
+            if (checkRow(i, numberList.get(k), board) && checkCol(j, numberList.get(k),
+                    board) && checkBox(i, j, numberList.get(k), board)) {
+                board.set(i, j, numberList.get(k));
                 if (fillSudoku(i, j + 1, board)) {
                     return true;
                 }
