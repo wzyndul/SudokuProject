@@ -5,8 +5,9 @@ public abstract class SudokuStructure {
     List<SudokuField> structure;
 
     SudokuStructure(SudokuField[] fields) {
-        // wprowadzic jakies ograniczenie
-        this.structure = Arrays.asList(fields);
+        if(fields.length == 9) {
+            this.structure = Arrays.asList(fields);
+        }
     }
 
     public boolean verify() {

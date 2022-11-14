@@ -31,4 +31,5 @@ class SudokuStructureTest {
         assertFalse(sudokuColumn.verify());
 
     }
+
 }
