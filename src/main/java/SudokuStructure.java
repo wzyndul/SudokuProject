@@ -1,10 +1,12 @@
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class SudokuStructure {
     List<SudokuField> structure;
 
-    SudokuStructure(List<SudokuField> list) {
-        this.structure = list;
+    SudokuStructure(SudokuField[] fields) {
+        // wprowadzic jakies ograniczenie
+        this.structure = Arrays.asList(fields);
     }
 
     public boolean verify() {
