@@ -1,11 +1,10 @@
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class SudokuStructure {
     List<SudokuField> structure;
 
-    SudokuStructure(SudokuField[] fields) {
-        this.structure = Arrays.asList(fields);
+    SudokuStructure(List<SudokuField> list) {
+        this.structure = list;
     }
 
     public boolean verify() {

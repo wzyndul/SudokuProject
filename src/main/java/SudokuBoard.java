@@ -1,4 +1,5 @@
-
+import java.util.Arrays;
+import java.util.List;
 
 public class SudokuBoard {
     private final int size = 9;
@@ -33,21 +34,23 @@ public class SudokuBoard {
     }
 
     public SudokuRow getRow(int y) {
-        SudokuField[] table = new SudokuField[9];
+        SudokuField[] table = new SudokuField[size];
         for (int i = 0; i < size; i++) {
             table[i] = new SudokuField();
             table[i].setFieldValue(board[y][i].getFieldValue());
         }
-        return new SudokuRow(table);
+        List<SudokuField> fieldsList = Arrays.asList(table);
+        return new SudokuRow(fieldsList);
     }
 
     public SudokuColumn getColumn(int x) {
-        SudokuField[] table = new SudokuField[9];
+        SudokuField[] table = new SudokuField[size];
         for (int i = 0; i < size; i++) {
             table[i] = new SudokuField();
             table[i].setFieldValue(board[i][x].getFieldValue());
         }
-        return new SudokuColumn(table);
+        List<SudokuField> fieldsList = Arrays.asList(table);
+        return new SudokuColumn(fieldsList);
     }
 
     public SudokuBox getBox(int x, int y) {
@@ -62,7 +65,8 @@ public class SudokuBoard {
                 index++;
             }
         }
-        return new SudokuBox(table);
+        List<SudokuField> fieldsList = Arrays.asList(table);
+        return new SudokuBox(fieldsList);
     }
 
     private boolean checkBoard() {

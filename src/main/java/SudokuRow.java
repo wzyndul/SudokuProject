@@ -1,5 +1,7 @@
+import java.util.List;
+
 public class SudokuRow extends SudokuStructure {
-    SudokuRow(SudokuField[] fields) {
-        super(fields);
+    SudokuRow(List<SudokuField> list) {
+        super(list);
     }
 }
