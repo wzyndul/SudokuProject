@@ -59,4 +59,9 @@ class SudokuBoardTest {
         sudokuBoard.set(1, 1, sudokuBoard.get(0, 0));
         assertFalse((Boolean) method.invoke(sudokuBoard));
     }
+    @Test
+    public void addingRemovingElement() {  //tutaj dorobić test do wyjątku rzucanego przez add i remove
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+    }
 }

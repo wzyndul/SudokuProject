@@ -5,7 +5,7 @@ public abstract class SudokuStructure {
     List<SudokuField> structure;
 
     SudokuStructure(SudokuField[] fields) {
-        if(fields.length == 9) {
+        if (fields.length == 9) {
             this.structure = Arrays.asList(fields);
         }
     }
