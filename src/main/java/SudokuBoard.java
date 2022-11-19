@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class SudokuBoard {
     private final int size = 81;
@@ -92,6 +93,26 @@ public class SudokuBoard {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "SudokuBoard{" +
+                "size=" + size +
+                ", board=" + board +
+                ", sudokuSolver=" + sudokuSolver +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SudokuBoard that = (SudokuBoard) o;
+        return size == that.size && Objects.equals(board, that.board) && Objects.equals(sudokuSolver, that.sudokuSolver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, board, sudokuSolver);
+    }
 }
 

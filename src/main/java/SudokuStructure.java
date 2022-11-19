@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class SudokuStructure {
     List<SudokuField> structure;
@@ -19,5 +20,25 @@ public abstract class SudokuStructure {
             }
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "SudokuStructure{" +
+                "structure=" + structure +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SudokuStructure that = (SudokuStructure) o;
+        return Objects.equals(structure, that.structure);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(structure);
     }
 }
