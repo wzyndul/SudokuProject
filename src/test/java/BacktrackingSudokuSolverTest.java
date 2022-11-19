@@ -34,4 +34,15 @@ class BacktrackingSudokuSolverTest {
         }
 
     }
+    @Test
+    void testToString() {
+    }
+
+    @Test
+    void testEquals() {
+    }
+
+    @Test
+    void testHashCode() {
+    }
 }

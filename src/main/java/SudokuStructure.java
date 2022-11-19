@@ -24,15 +24,17 @@ public abstract class SudokuStructure {
 
     @Override
     public String toString() {
-        return "SudokuStructure{" +
-                "structure=" + structure +
-                '}';
+        return "SudokuStructure{" + "structure=" + structure + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         SudokuStructure that = (SudokuStructure) o;
         return Objects.equals(structure, that.structure);
     }

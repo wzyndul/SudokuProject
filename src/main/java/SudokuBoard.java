@@ -95,19 +95,21 @@ public class SudokuBoard {
 
     @Override
     public String toString() {
-        return "SudokuBoard{" +
-                "size=" + size +
-                ", board=" + board +
-                ", sudokuSolver=" + sudokuSolver +
-                '}';
+        return "SudokuBoard{" + "size=" + size + ", board=" + board
+                + ", sudokuSolver=" + sudokuSolver + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         SudokuBoard that = (SudokuBoard) o;
-        return size == that.size && Objects.equals(board, that.board) && Objects.equals(sudokuSolver, that.sudokuSolver);
+        return size == that.size && Objects.equals(board, that.board)
+                && Objects.equals(sudokuSolver, that.sudokuSolver);
     }
 
     @Override
