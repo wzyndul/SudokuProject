@@ -41,10 +41,15 @@ class SudokuStructureTest {
             structure2[i] = new SudokuField();
             structure2[i].setFieldValue(i + 1);
         }
+        SudokuRow row = new SudokuRow(structure);
         SudokuColumn column1 = new SudokuColumn(structure);
         SudokuColumn column2 = new SudokuColumn(structure);
         SudokuColumn column3 = new SudokuColumn(structure2);
         SudokuBox box = new SudokuBox(structure);
+
+        assertFalse(row.equals(column1));
+        assertFalse(column1.equals(row));
+        assertEquals(row.hashCode(), column1.hashCode());
 
         assertNotEquals(column1.toString(), null);
         assertEquals(column1.equals(column1), true);
