@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SudokuBoard {
@@ -19,7 +21,7 @@ public class SudokuBoard {
     }
 
     private int updateCoordinates(int x, int y) {
-        return (x * 9 + y);
+        return x * 9 + y;
     }
 
     public int get(int x, int y) {
@@ -96,11 +98,28 @@ public class SudokuBoard {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("size", size)
-                .append("board", board)
-                .append("sudokuSolver", sudokuSolver)
-                .toString();
+        return new ToStringBuilder(this).append("size", size).append("board", board)
+                .append("sudokuSolver", sudokuSolver).toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        SudokuBoard that = (SudokuBoard) o;
+
+        return new EqualsBuilder().append(board, that.board).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).append(board).toHashCode();
     }
 }
 

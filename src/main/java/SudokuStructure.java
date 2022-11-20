@@ -5,14 +5,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
-
 public abstract class SudokuStructure {
     List<SudokuField> structure;
 
     SudokuStructure(SudokuField[] fields) {
-        if (fields.length == 9) {
-            this.structure = Arrays.asList(fields);
-        }
+        this.structure = Arrays.asList(fields);
     }
 
     public boolean verify() {
