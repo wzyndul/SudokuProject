@@ -1,10 +1,10 @@
+import java.util.Arrays;
+import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+
 
 public abstract class SudokuStructure {
     List<SudokuField> structure;
@@ -36,9 +36,13 @@ public abstract class SudokuStructure {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         SudokuStructure that = (SudokuStructure) o;
 

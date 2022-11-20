@@ -1,8 +1,6 @@
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SudokuBoard {
     private final int size = 81;

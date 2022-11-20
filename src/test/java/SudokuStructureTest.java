@@ -74,6 +74,5 @@ class SudokuStructureTest {
         assertNotEquals(box.toString(),null);
         assertNotEquals(column.toString(),null);
         assertNotEquals(row.toString(),null);
-        assertNotEquals(structure.toString(),null);
     }
 }

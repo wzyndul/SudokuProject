@@ -38,7 +38,6 @@ class SudokuFieldsTest {
     @Test
     void toStringTest() {
         SudokuField b = new SudokuField();
-        b.setFieldValue(5);
         assertNotEquals(b.toString(),null);
     }
 }
