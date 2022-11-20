@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SudokuRow extends SudokuStructure {
     SudokuRow(SudokuField[] fields) {
@@ -7,8 +8,8 @@ public class SudokuRow extends SudokuStructure {
 
     @Override
     public String toString() {
-        return "SudokuRow{" + "structure=" + structure + '}';
+        return new ToStringBuilder(this)
+                .append("structure", structure)
+                .toString();
     }
-
-
 }

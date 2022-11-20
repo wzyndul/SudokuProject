@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -93,29 +95,14 @@ public class SudokuBoard {
         return true;
     }
 
+
     @Override
     public String toString() {
-        return "SudokuBoard{" + "size=" + size + ", board=" + board
-                + ", sudokuSolver=" + sudokuSolver + '}';
+        return new ToStringBuilder(this)
+                .append("size", size)
+                .append("board", board)
+                .append("sudokuSolver", sudokuSolver)
+                .toString();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SudokuBoard that = (SudokuBoard) o;
-        return  Objects.equals(board, that.board);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(size, board, sudokuSolver);
-    }
-
-
 }
 

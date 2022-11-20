@@ -1,3 +1,7 @@
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -22,25 +26,27 @@ public abstract class SudokuStructure {
         return true;
     }
 
+
     @Override
     public String toString() {
-        return "SudokuStructure{" + "structure=" + structure + '}';
+        return new ToStringBuilder(this)
+                .append("structure", structure)
+                .toString();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
         SudokuStructure that = (SudokuStructure) o;
-        return Objects.equals(structure, that.structure);
+
+        return new EqualsBuilder().append(structure, that.structure).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(structure);
+        return new HashCodeBuilder(17, 37).append(structure).toHashCode();
     }
 }

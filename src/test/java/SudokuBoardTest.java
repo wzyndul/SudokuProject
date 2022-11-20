@@ -78,7 +78,7 @@ class SudokuBoardTest {
             sudokuBoard2.set(i, 0,i+1);
         }
 
-        assertEquals(sudokuBoard1.equals(sudokuBoard2),true);
+        assertEquals(sudokuBoard1.equals(sudokuBoard2),false);
         assertEquals(sudokuBoard1.equals(sudokuBoard1),true);
         assertEquals(sudokuBoard1.hashCode(),sudokuBoard2.hashCode());
 
