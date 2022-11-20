@@ -64,4 +64,38 @@ class SudokuBoardTest {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
     }
+
+    @Test
+    void equalsAndHashCodeTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard1 = new SudokuBoard(backtrackingSudokuSolver);
+        SudokuBoard sudokuBoard2 = new SudokuBoard(backtrackingSudokuSolver);
+
+        for(int i=0;i<9;i++){
+            sudokuBoard1.set(i, 0,i+1);
+        }
+        for(int i=0;i<9;i++){
+            sudokuBoard2.set(i, 0,i+1);
+        }
+
+        assertEquals(sudokuBoard1.equals(sudokuBoard2),true);
+        assertEquals(sudokuBoard1.equals(sudokuBoard1),true);
+        assertEquals(sudokuBoard1.hashCode(),sudokuBoard2.hashCode());
+
+        sudokuBoard2.set(1,0,3);
+
+        assertEquals(sudokuBoard1.equals(sudokuBoard2),false);
+        assertEquals(sudokuBoard1.equals(backtrackingSudokuSolver),false);
+        assertNotEquals(sudokuBoard1.hashCode(),sudokuBoard2.hashCode());
+        assertEquals(sudokuBoard1.equals(null),false);
+    }
+    @Test
+    void toStringTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
+        assertNotEquals(sudokuBoard.toString(),null);
+    }
+
+
 }

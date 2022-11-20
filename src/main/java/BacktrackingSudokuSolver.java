@@ -86,27 +86,5 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         return false;
     }
 
-    @Override
-    public String toString() {
-        return "BacktrackingSudokuSolver{" + "size=" + size + '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BacktrackingSudokuSolver that = (BacktrackingSudokuSolver) o;
-        return size == that.size;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(size);
-    }
-
 
 }

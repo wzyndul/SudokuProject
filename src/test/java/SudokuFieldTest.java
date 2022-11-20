@@ -16,4 +16,29 @@ class SudokuFieldsTest {
     }
 
 
+
+
+    @Test
+    void HashCodeAndEqualsTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuField a = new SudokuField();
+        SudokuField b = new SudokuField();
+        a.setFieldValue(5);
+        b.setFieldValue(5);
+        assertEquals(a.equals(a),true);
+        assertEquals(a.equals(b),true);
+        assertEquals(a.hashCode(),b.hashCode());
+        b.setFieldValue(6);
+        assertEquals(a.equals(b),false);
+        assertEquals(a.equals(backtrackingSudokuSolver),false);
+        assertEquals(a.equals(null),false);
+        assertNotEquals(a.hashCode(),b.hashCode());
+    }
+
+    @Test
+    void toStringTest() {
+        SudokuField b = new SudokuField();
+        b.setFieldValue(5);
+        assertEquals(b.toString(),"SudokuField{value=5}");
+    }
 }

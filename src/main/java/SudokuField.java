@@ -34,4 +34,6 @@ public class SudokuField {
     public int hashCode() {
         return Objects.hash(value);
     }
+
+
 }

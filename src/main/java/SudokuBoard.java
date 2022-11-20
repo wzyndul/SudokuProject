@@ -108,13 +108,14 @@ public class SudokuBoard {
             return false;
         }
         SudokuBoard that = (SudokuBoard) o;
-        return size == that.size && Objects.equals(board, that.board)
-                && Objects.equals(sudokuSolver, that.sudokuSolver);
+        return  Objects.equals(board, that.board);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(size, board, sudokuSolver);
     }
+
+
 }
 
