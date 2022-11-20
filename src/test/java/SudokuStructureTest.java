@@ -17,11 +17,13 @@ class SudokuStructureTest {
         structure[8].setFieldValue(1);
         assertFalse(sudokuRow.verify());
         structure[8].setFieldValue(9);
+
         SudokuBox sudokuBox = new SudokuBox(structure);
         assertTrue(sudokuBox.verify());
         structure[8].setFieldValue(1);
         assertFalse(sudokuBox.verify());
         structure[8].setFieldValue(9);
+
         SudokuColumn sudokuColumn = new SudokuColumn(structure);
         assertTrue(sudokuColumn.verify());
         structure[8].setFieldValue(1);
@@ -36,27 +38,33 @@ class SudokuStructureTest {
         for (int i = 0; i < 9; i++) {
             structure[i] = new SudokuField();
             structure[i].setFieldValue(i + 1);
-        }
-        for (int i = 8; i >= 0; i--) {
             structure2[i] = new SudokuField();
             structure2[i].setFieldValue(i + 1);
         }
+
         SudokuRow row = new SudokuRow(structure);
+        SudokuColumn column0 = new SudokuColumn(structure);
         SudokuColumn column1 = new SudokuColumn(structure);
         SudokuColumn column2 = new SudokuColumn(structure);
         SudokuColumn column3 = new SudokuColumn(structure2);
         SudokuBox box = new SudokuBox(structure);
 
+        assertTrue(column1.equals(column1));
+
         assertFalse(row.equals(column1));
         assertFalse(column1.equals(row));
         assertEquals(row.hashCode(), column1.hashCode());
 
-        assertNotEquals(column1.toString(), null);
-        assertEquals(column1.equals(column1), true);
-        assertEquals(column1.hashCode(), column2.hashCode());
-        assertEquals(column1.equals(column2), true);
         assertEquals(column1.equals(box), false);
         assertEquals(column1.equals(null), false);
+        assertEquals(column1.equals(column1), true);
+        assertEquals(column1.hashCode(), column2.hashCode());
+
+        assertEquals(column1.equals(column2), true);
+        assertEquals(column2.equals(column0), true);
+        assertEquals(column1.equals(column0), true);
+
+
         structure[3].setFieldValue(9);
         assertEquals(column1.equals(column3), false);
         assertNotEquals(column1.hashCode(), column3.hashCode());

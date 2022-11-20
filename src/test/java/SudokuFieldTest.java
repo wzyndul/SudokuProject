@@ -20,11 +20,19 @@ class SudokuFieldsTest {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuField a = new SudokuField();
         SudokuField b = new SudokuField();
+        SudokuField c = new SudokuField();
         a.setFieldValue(5);
         b.setFieldValue(5);
+        c.setFieldValue(5);
+        assertTrue(a.equals(a));
         assertEquals(a.equals(a), true);
         assertEquals(a.equals(b), true);
         assertEquals(a.hashCode(), b.hashCode());
+
+        assertTrue(a.equals(b));
+        assertTrue(b.equals(c));
+        assertTrue(a.equals(c));
+
         b.setFieldValue(6);
         assertEquals(a.equals(b), false);
         assertEquals(a.equals(backtrackingSudokuSolver), false);
