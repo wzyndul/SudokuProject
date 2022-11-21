@@ -25,7 +25,6 @@ class SudokuFieldsTest {
         b.setFieldValue(5);
         c.setFieldValue(5);
         assertTrue(a.equals(a));
-        assertEquals(a.equals(a), true);
         assertEquals(a.equals(b), true);
         assertEquals(a.hashCode(), b.hashCode());
 
