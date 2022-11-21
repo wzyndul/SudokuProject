@@ -114,12 +114,14 @@ public class SudokuBoard {
 
         SudokuBoard that = (SudokuBoard) o;
 
-        return new EqualsBuilder().append(board, that.board).isEquals();
+        return new EqualsBuilder().append(board, that.board)
+                .append(sudokuSolver, that.sudokuSolver).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(board).toHashCode();
+        return new HashCodeBuilder(17, 37).append(board)
+                .append(sudokuSolver).toHashCode();
     }
 }
 

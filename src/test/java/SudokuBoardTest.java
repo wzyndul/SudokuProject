@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -65,15 +66,25 @@ class SudokuBoardTest {
     @Test
     void equalsAndHashCodeTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        BacktrackingSudokuSolver backtrackingSudokuSolver1 = new BacktrackingSudokuSolver();
+
         SudokuBoard sudokuBoard1 = new SudokuBoard(backtrackingSudokuSolver);
         SudokuBoard sudokuBoard2 = new SudokuBoard(backtrackingSudokuSolver);
+        SudokuBoard sudokuBoard3 = new SudokuBoard(backtrackingSudokuSolver1);
+
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 sudokuBoard1.set(i, j, j + 1);
                 sudokuBoard2.set(i, j, j + 1);
+                sudokuBoard3.set(i, j, j + 1);
             }
         }
+        assertTrue(sudokuBoard1.equals(sudokuBoard1));
+        assertFalse(sudokuBoard1.equals(sudokuBoard3));
+        assertFalse(sudokuBoard3.equals(sudokuBoard1));
+        assertNotEquals(sudokuBoard1.hashCode(), sudokuBoard3.hashCode());
+
         assertEquals(sudokuBoard1.equals(sudokuBoard2), true);
         assertEquals(sudokuBoard1.equals(sudokuBoard1), true);
         assertEquals(sudokuBoard1.hashCode(), sudokuBoard2.hashCode());
