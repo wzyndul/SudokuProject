@@ -48,6 +48,6 @@ public abstract class SudokuStructure {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(structure).toHashCode();
+        return new HashCodeBuilder(13, 31).append(structure).toHashCode();
     }
 }

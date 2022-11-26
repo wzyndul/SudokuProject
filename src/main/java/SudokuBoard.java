@@ -120,7 +120,7 @@ public class SudokuBoard {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(board)
+        return new HashCodeBuilder(19, 35).append(board)
                 .append(sudokuSolver).toHashCode();
     }
 }

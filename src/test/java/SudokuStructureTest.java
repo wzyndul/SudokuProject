@@ -49,6 +49,9 @@ class SudokuStructureTest {
         SudokuColumn column3 = new SudokuColumn(structure2);
         SudokuBox box = new SudokuBox(structure);
 
+        assertTrue(column0.equals(column1));
+        assertTrue(column1.equals(column0));
+
         assertTrue(column1.equals(column1));
 
         assertFalse(row.equals(column1));
