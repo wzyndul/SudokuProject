@@ -13,6 +13,7 @@ class FileSudokuBoardDaoTest {
     public void setUp() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
         factory = new SudokuBoardDaoFactory();
 
     }
@@ -28,6 +29,8 @@ class FileSudokuBoardDaoTest {
                 assertEquals(sudokuBoard.get(i, j), sudokuBoard1.get(i, j));
             }
         }
+      //  assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
+      // assertEquals(sudokuBoard, sudokuBoard1);
     }
 
     @Test
