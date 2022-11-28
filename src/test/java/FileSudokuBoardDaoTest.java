@@ -20,7 +20,7 @@ class FileSudokuBoardDaoTest {
 
     @Test
     void writeReadTest() {
-        fileSudokuBoardDao = factory.getFileDao("new_file");
+        fileSudokuBoardDao = factory.getFileDao("new_file.txt");
         fileSudokuBoardDao.write(sudokuBoard);
 
         sudokuBoard1 = fileSudokuBoardDao.read();
@@ -29,24 +29,26 @@ class FileSudokuBoardDaoTest {
                 assertEquals(sudokuBoard.get(i, j), sudokuBoard1.get(i, j));
             }
         }
-      //  assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
-      // assertEquals(sudokuBoard, sudokuBoard1);
+        //  assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
+        // assertEquals(sudokuBoard, sudokuBoard1);
+
+        assertTrue(sudokuBoard1.equals(sudokuBoard));
     }
 
     @Test
     void writeExceptionTest() {
-        fileSudokuBoardDao = factory.getFileDao("??????????");
+        fileSudokuBoardDao = factory.getFileDao("??????????.txt");
         assertThrows(RuntimeException.class, () -> {fileSudokuBoardDao.write(sudokuBoard);});
     }
     @Test
     void readExceptionTest() {
-        fileSudokuBoardDao = factory.getFileDao("empty");
+        fileSudokuBoardDao = factory.getFileDao("empty.txt");
        assertThrows(RuntimeException.class, () -> {fileSudokuBoardDao.read();});
     }
 
     @Test
     void closeTest() throws Exception {
-        fileSudokuBoardDao = factory.getFileDao("file");
+        fileSudokuBoardDao = factory.getFileDao("file.txt");
         fileSudokuBoardDao.close();
     }
 }

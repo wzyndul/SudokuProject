@@ -6,7 +6,7 @@ class SudokuBoardDaoFactoryTest {
     @Test
     void notNullFactoryTest() {
         SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
-       assertNotNull(factory.getFileDao("okon"));
+       assertNotNull(factory.getFileDao("okon.txt"));
     }
 
 }
