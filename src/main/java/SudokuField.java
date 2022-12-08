@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
 
-public class SudokuField implements Serializable {
+public class SudokuField implements Serializable,Comparable<SudokuField>,Cloneable {
     private int value;
 
     public int getFieldValue() {
@@ -43,5 +43,30 @@ public class SudokuField implements Serializable {
         return new ToStringBuilder(this)
                 .append("value", value)
                 .toString();
+    }
+
+    @Override
+    public int compareTo(SudokuField o) {
+        if(o==null) {
+            return 0;
+        }
+        if(this.getFieldValue() == o.getFieldValue()) {
+            return 0;
+        } else if (this.getFieldValue() > o.getFieldValue()) {
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    @Override
+    protected SudokuField clone() {
+        try {
+            return (SudokuField) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println(this.getClass().getName() + "klasa nie implementuje Cloneable...");
+            return null;
+        }
     }
 }
