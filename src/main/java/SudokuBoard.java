@@ -96,13 +96,6 @@ public class SudokuBoard implements Serializable {
         return true;
     }
 
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("size", size).append("board", board)
-                .append("sudokuSolver", sudokuSolver).toString();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -115,14 +108,23 @@ public class SudokuBoard implements Serializable {
 
         SudokuBoard that = (SudokuBoard) o;
 
-        return new EqualsBuilder().append(board, that.board)
+        return new EqualsBuilder().append(size, that.size).append(board, that.board)
                 .append(sudokuSolver, that.sudokuSolver).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(19, 35).append(board)
-                .append(sudokuSolver).toHashCode();
+        return new HashCodeBuilder(17, 37).append(size)
+                .append(board).append(sudokuSolver).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("size", size)
+                .append("board", board)
+                .append("sudokuSolver", sudokuSolver)
+                .toString();
     }
 }
 

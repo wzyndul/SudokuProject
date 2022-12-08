@@ -81,9 +81,9 @@ class SudokuBoardTest {
             }
         }
         assertTrue(sudokuBoard1.equals(sudokuBoard1));
-        assertFalse(sudokuBoard1.equals(sudokuBoard3));
-        assertFalse(sudokuBoard3.equals(sudokuBoard1));
-        assertNotEquals(sudokuBoard1.hashCode(), sudokuBoard3.hashCode());
+        assertTrue(sudokuBoard1.equals(sudokuBoard3));
+        assertTrue(sudokuBoard3.equals(sudokuBoard1));
+        assertEquals(sudokuBoard1.hashCode(), sudokuBoard3.hashCode());
 
         assertEquals(sudokuBoard1.equals(sudokuBoard2), true);
         assertEquals(sudokuBoard1.hashCode(), sudokuBoard2.hashCode());
