@@ -120,13 +120,24 @@ class SudokuStructureTest {
         assertNotSame(box1, box2);
 
 
-        SudokuBox box3 = new SudokuBox(structure1);   //tak samo bedzie dla column i row
+        SudokuBox box3 = new SudokuBox(structure1);
+        SudokuColumn col3 = new SudokuColumn(structure1);
+        SudokuRow row3 = new SudokuRow(structure1);
+        SudokuColumn col4 = col3.clone();
+        SudokuRow row4 = row3.clone();
         SudokuBox box4 = box3.clone();
+
         assertTrue(box3.equals(box4));
         assertNotSame(box3, box4);
+        assertTrue(row3.equals(row4));
+        assertNotSame(row3, row4);
+        assertTrue(col3.equals(col4));
+        assertNotSame(col3, col4);
+
         structure1[8].setFieldValue(1);
+
         assertFalse(box3.equals(box4));
-
-
+        assertFalse(col3.equals(col4));
+        assertFalse(row3.equals(row4));
     }
 }
