@@ -1,11 +1,12 @@
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuBoard implements Serializable {
+public class SudokuBoard implements Serializable, Cloneable {
     private final int size = 81;
 
     private List<SudokuField> board;
@@ -125,6 +126,22 @@ public class SudokuBoard implements Serializable {
                 .append("board", board)
                 .append("sudokuSolver", sudokuSolver)
                 .toString();
+    }
+
+    @Override
+    public SudokuBoard clone() {  //idk czy giten, chyba dziaal
+        //if (this.sudokuSolver.getClass() == BacktrackingSudokuSolver.class)
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        int k = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                sudokuBoard.set(i, j, Collections.unmodifiableList(board).get(k).getFieldValue());
+                k++;
+            }
+        }
+        return sudokuBoard;
+
     }
 }
 

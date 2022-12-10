@@ -35,4 +35,30 @@ class BacktrackingSudokuSolverTest {
 
     }
 
+    @Test
+    void compareToTest() {
+        assertTrue(true); //zrobic testy
+    }
+
+    @Test
+    void toStringTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        assertNotEquals(backtrackingSudokuSolver.toString(), null);
+    }
+
+    @Test
+    void EqualsHashCodeTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver1 = new BacktrackingSudokuSolver();
+        BacktrackingSudokuSolver backtrackingSudokuSolver2 = new BacktrackingSudokuSolver();
+
+        assertTrue(backtrackingSudokuSolver1.equals(backtrackingSudokuSolver1));
+        assertTrue(backtrackingSudokuSolver1.equals(backtrackingSudokuSolver2));
+        assertTrue(backtrackingSudokuSolver2.equals(backtrackingSudokuSolver1));
+        assertEquals(backtrackingSudokuSolver1.hashCode(), backtrackingSudokuSolver2.hashCode());
+
+        SudokuField field = new SudokuField();
+        assertNotEquals(backtrackingSudokuSolver1, null);
+        assertNotEquals(backtrackingSudokuSolver1, field);
+    }
+
 }

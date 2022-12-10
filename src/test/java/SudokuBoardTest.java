@@ -104,6 +104,21 @@ class SudokuBoardTest {
         sudokuBoard.solveGame();
         assertNotEquals(sudokuBoard.toString(), null);
     }
+    @Test
+    void compareToTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
+        SudokuBoard sudokuBoardCloned = sudokuBoard.clone();
+        assertNotNull(sudokuBoardCloned);
+        assertTrue(sudokuBoard.equals(sudokuBoardCloned));
+        assertNotSame(sudokuBoard, sudokuBoardCloned);
+        sudokuBoard.set(0,0, sudokuBoardCloned.get(0,1)); //ustawiam w tym boardzie wartosc z 2
+        assertFalse(sudokuBoard.equals(sudokuBoardCloned));
+        assertNotSame(sudokuBoard, sudokuBoardCloned);
+
+
+    }
 
 
 }

@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuFieldsTest {
@@ -44,5 +45,35 @@ class SudokuFieldsTest {
     void toStringTest() {
         SudokuField b = new SudokuField();
         assertNotEquals(b.toString(), null);
+    }
+
+    @Test
+    void CloneTestField() throws CloneNotSupportedException {
+        SudokuField field = new SudokuField();
+        field.setFieldValue(2);
+        SudokuField copiedField = field.clone();
+        assertNotNull(copiedField);
+        assertTrue(field.equals(copiedField));
+        assertTrue(copiedField.equals(field));
+        assertEquals(field.hashCode(), copiedField.hashCode());
+        assertNotSame(field, copiedField);
+        assertEquals(field.getFieldValue(), copiedField.getFieldValue());
+        field.setFieldValue(3);
+        assertNotEquals(field.getFieldValue(), copiedField.getFieldValue());
+    }
+
+    @Test
+    void compareToTest() {
+        SudokuField field1 = new SudokuField();
+        SudokuField field2 = new SudokuField();
+        field1.setFieldValue(1);
+        field2.setFieldValue(9);
+        assertEquals(field1.compareTo(field2), -1);
+        assertEquals(field2.compareTo(field1), 1);
+        field2.setFieldValue(1);
+        assertEquals(field1.compareTo(field2), 0);
+        assertThrows(NullPointerException.class, () -> {
+            field1.compareTo(null);
+        });
     }
 }

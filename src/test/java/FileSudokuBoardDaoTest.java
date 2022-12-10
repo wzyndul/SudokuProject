@@ -29,8 +29,8 @@ class FileSudokuBoardDaoTest {
                 assertEquals(sudokuBoard.get(i, j), sudokuBoard1.get(i, j));
             }
         }
-         assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
-         assertEquals(sudokuBoard, sudokuBoard1);
+        assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
+        assertEquals(sudokuBoard, sudokuBoard1);
 
         assertTrue(sudokuBoard1.equals(sudokuBoard));
     }
@@ -43,7 +43,7 @@ class FileSudokuBoardDaoTest {
     @Test
     void readExceptionTest() {
         fileSudokuBoardDao = factory.getFileDao("empty.txt");
-       assertThrows(RuntimeException.class, () -> {fileSudokuBoardDao.read();});
+        assertThrows(RuntimeException.class, () -> {fileSudokuBoardDao.read();});
     }
 
     @Test

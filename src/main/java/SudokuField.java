@@ -4,8 +4,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
-
-public class SudokuField implements Serializable,Comparable<SudokuField>,Cloneable {
+public class SudokuField implements Serializable, Comparable<SudokuField>, Cloneable {
     private int value;
 
     public int getFieldValue() {
@@ -47,26 +46,21 @@ public class SudokuField implements Serializable,Comparable<SudokuField>,Cloneab
 
     @Override
     public int compareTo(SudokuField o) {
-        if(o==null) {
-            return 0;
-        }
-        if(this.getFieldValue() == o.getFieldValue()) {
-            return 0;
-        } else if (this.getFieldValue() > o.getFieldValue()) {
-            return 1;
-        }
-        else {
-            return -1;
+        if (o != null) {
+            if (this.getFieldValue() == o.getFieldValue()) {
+                return 0;
+            } else if (this.getFieldValue() > o.getFieldValue()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            throw new NullPointerException("Obiekt jest nullem");
         }
     }
 
     @Override
-    protected SudokuField clone() {
-        try {
-            return (SudokuField) super.clone();
-        } catch (CloneNotSupportedException e) {
-            System.out.println(this.getClass().getName() + "klasa nie implementuje Cloneable...");
-            return null;
-        }
+    protected SudokuField clone() throws CloneNotSupportedException {
+        return (SudokuField) super.clone();
     }
 }

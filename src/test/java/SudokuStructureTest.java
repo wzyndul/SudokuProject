@@ -88,4 +88,45 @@ class SudokuStructureTest {
         assertNotEquals(column.toString(), null);
         assertNotEquals(row.toString(), null);
     }
+    @Test
+    void CloneTestStructure() {
+        SudokuField[] structure = new SudokuField[9];
+        SudokuField[] structure1 = new SudokuField[9];
+        for (int i = 0; i < 9; i++) {
+            structure[i] = new SudokuField();
+            structure[i].setFieldValue(i + 1);
+            structure1[i] = new SudokuField();
+            structure1[i].setFieldValue(i + 1);
+        }
+        SudokuRow row1 = new SudokuRow(structure);
+        SudokuRow row2 = row1.clone();
+        assertNotNull(row2);
+        assertTrue(row1.equals(row2));
+        assertTrue(row2.equals(row1));
+        assertNotSame(row1, row2);
+
+        SudokuColumn col1 = new SudokuColumn(structure);
+        SudokuColumn col2 = col1.clone();
+        assertNotNull(col2);
+        assertTrue(col1.equals(col2));
+        assertTrue(col2.equals(col1));
+        assertNotSame(col1, col2);
+
+        SudokuBox box1 = new SudokuBox(structure);
+        SudokuBox box2 = box1.clone();
+        assertNotNull(box2);
+        assertTrue(box1.equals(box2));
+        assertTrue(box2.equals(box1));
+        assertNotSame(box1, box2);
+
+
+        SudokuBox box3 = new SudokuBox(structure1);   //tak samo bedzie dla column i row
+        SudokuBox box4 = box3.clone();
+        assertTrue(box3.equals(box4));
+        assertNotSame(box3, box4);
+        structure1[8].setFieldValue(1);
+        assertFalse(box3.equals(box4));
+
+
+    }
 }
