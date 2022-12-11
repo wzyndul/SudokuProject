@@ -1,9 +1,7 @@
 package pl.sudoku;
 
 import org.junit.jupiter.api.Test;
-import pl.sudoku.BacktrackingSudokuSolver;
-import pl.sudoku.SudokuBoard;
-import pl.sudoku.SudokuBoardRepository;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
