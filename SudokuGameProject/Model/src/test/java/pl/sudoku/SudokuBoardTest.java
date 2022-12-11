@@ -1,4 +1,8 @@
+package pl.sudoku;
+
 import org.junit.jupiter.api.Test;
+import pl.sudoku.BacktrackingSudokuSolver;
+import pl.sudoku.SudokuBoard;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

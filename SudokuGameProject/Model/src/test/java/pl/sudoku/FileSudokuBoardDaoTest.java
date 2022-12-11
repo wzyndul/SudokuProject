@@ -1,5 +1,12 @@
+package pl.sudoku;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.sudoku.BacktrackingSudokuSolver;
+import pl.sudoku.Dao;
+import pl.sudoku.SudokuBoard;
+import pl.sudoku.SudokuBoardDaoFactory;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileSudokuBoardDaoTest {

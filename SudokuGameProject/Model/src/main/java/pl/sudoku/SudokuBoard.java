@@ -1,3 +1,5 @@
+package pl.sudoku;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
@@ -130,7 +132,7 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     @Override
     public SudokuBoard clone() {  //idk czy giten, chyba dziaal
-        //if (this.sudokuSolver.getClass() == BacktrackingSudokuSolver.class)
+        //if (this.sudokuSolver.getClass() == pl.sudoku.BacktrackingSudokuSolver.class)
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         int k = 0;

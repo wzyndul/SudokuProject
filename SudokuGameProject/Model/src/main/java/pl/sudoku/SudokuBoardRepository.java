@@ -1,3 +1,5 @@
+package pl.sudoku;
+
 public class SudokuBoardRepository implements Repository<SudokuBoard> {
 
     private final SudokuBoard sudokuBoard;

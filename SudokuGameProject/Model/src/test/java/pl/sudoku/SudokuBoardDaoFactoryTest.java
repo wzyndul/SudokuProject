@@ -1,4 +1,7 @@
+package pl.sudoku;
+
 import org.junit.jupiter.api.Test;
+import pl.sudoku.SudokuBoardDaoFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

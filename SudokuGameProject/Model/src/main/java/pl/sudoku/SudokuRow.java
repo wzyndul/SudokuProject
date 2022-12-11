@@ -1,17 +1,17 @@
-import java.util.Collections;
+package pl.sudoku;
 
-public class SudokuColumn extends SudokuStructure implements Cloneable {
-    SudokuColumn(SudokuField[] fields) {
+public class SudokuRow extends SudokuStructure implements Cloneable {
+    SudokuRow(SudokuField[] fields) {
         super(fields);
     }
 
     @Override
-    public SudokuColumn clone() {
+    public SudokuRow clone() {
         SudokuField[] table = new SudokuField[getAll().size()];
         for (int i = 0; i < getAll().size(); i++) {
             table[i] = new SudokuField();
             table[i].setFieldValue(getAll().get(i).getFieldValue());
         }
-        return new SudokuColumn(table);
+        return new SudokuRow(table);
     }
 }
