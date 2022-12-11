@@ -1,3 +1,5 @@
+package pl.comp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import org.apache.commons.lang3.builder.EqualsBuilder;
