@@ -7,10 +7,10 @@ public class SudokuColumn extends SudokuStructure implements Cloneable {
 
     @Override
     public SudokuColumn clone() {
-        SudokuField[] table = new SudokuField[structure.size()];
-        for (int i = 0; i < structure.size(); i++) {
+        SudokuField[] table = new SudokuField[getAll().size()];
+        for (int i = 0; i < getAll().size(); i++) {
             table[i] = new SudokuField();
-            table[i].setFieldValue(Collections.unmodifiableList(structure).get(i).getFieldValue());
+            table[i].setFieldValue(getAll().get(i).getFieldValue());
         }
         return new SudokuColumn(table);
     }

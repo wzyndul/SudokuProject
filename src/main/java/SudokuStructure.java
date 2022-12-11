@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -6,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
 public abstract class SudokuStructure {
-    List<SudokuField> structure;
+    private List<SudokuField> structure;
 
     SudokuStructure(SudokuField[] fields) {
         this.structure = Arrays.asList(fields);
@@ -23,6 +24,9 @@ public abstract class SudokuStructure {
         return true;
     }
 
+    List<SudokuField> getAll() {
+        return Collections.unmodifiableList(structure);
+    }
 
     @Override
     public String toString() {
