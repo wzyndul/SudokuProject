@@ -105,7 +105,7 @@ class SudokuBoardTest {
         assertNotEquals(sudokuBoard.toString(), null);
     }
     @Test
-    void compareToTest() {
+    void cloneTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
