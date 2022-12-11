@@ -1,5 +1,3 @@
-package pl.comp;
-
 public class SudokuBoardRepository implements Repository<SudokuBoard> {
 
     private final SudokuBoard sudokuBoard;
