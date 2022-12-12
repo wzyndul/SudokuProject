@@ -11,7 +11,7 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
 
     private String name;
 
-    FileSudokuBoardDao(String name) {
+    public FileSudokuBoardDao(String name) {
         this.name = name;
 
     }

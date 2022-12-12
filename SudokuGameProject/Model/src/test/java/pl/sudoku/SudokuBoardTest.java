@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SudokuBoardTest {
+public class SudokuBoardTest {
 
     @Test
     public void getSetMethodsTest() {
@@ -21,7 +21,7 @@ class SudokuBoardTest {
 
 
     @Test
-    void differentNumbers() {
+    public void differentNumbers() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -44,7 +44,7 @@ class SudokuBoardTest {
     }
 
     @Test
-    void checkBoardTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void checkBoardTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -68,7 +68,7 @@ class SudokuBoardTest {
 
 
     @Test
-    void equalsAndHashCodeTest() {
+    public void equalsAndHashCodeTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         BacktrackingSudokuSolver backtrackingSudokuSolver1 = new BacktrackingSudokuSolver();
 
@@ -102,14 +102,14 @@ class SudokuBoardTest {
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
         assertNotEquals(sudokuBoard.toString(), null);
     }
     @Test
-    void cloneTest() {
+    public void cloneTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();

@@ -4,7 +4,7 @@ public class SudokuBoardRepository implements Repository<SudokuBoard> {
 
     private final SudokuBoard sudokuBoard;
 
-    SudokuBoardRepository(SudokuBoard sudokuBoard) {
+    public SudokuBoardRepository(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
     }
 

@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BacktrackingSudokuSolverTest {
+public class BacktrackingSudokuSolverTest {
 
     @Test
-    void solve() {
+    public void solve() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -39,18 +39,18 @@ class BacktrackingSudokuSolverTest {
     }
 
     @Test
-    void compareToTest() {
+    public void compareToTest() {
         assertTrue(true); //zrobic testy
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         assertNotEquals(backtrackingSudokuSolver.toString(), null);
     }
 
     @Test
-    void EqualsHashCodeTest() {
+    public void EqualsHashCodeTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver1 = new BacktrackingSudokuSolver();
         BacktrackingSudokuSolver backtrackingSudokuSolver2 = new BacktrackingSudokuSolver();
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class SudokuStructureTest {
+public class SudokuStructureTest {
     @Test
     public void verifyTest() {
         SudokuField[] structure = new SudokuField[9];
@@ -35,7 +35,7 @@ class SudokuStructureTest {
 
 
     @Test
-    void hashCodeAndEqualsTest() {
+    public void hashCodeAndEqualsTest() {
         SudokuField[] structure = new SudokuField[9];
         SudokuField[] structure2 = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
@@ -78,7 +78,7 @@ class SudokuStructureTest {
 
 
     @Test
-    void ToStringTest() {
+    public void ToStringTest() {
         SudokuField[] structure = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
             structure[i] = new SudokuField();
@@ -92,7 +92,7 @@ class SudokuStructureTest {
         assertNotEquals(row.toString(), null);
     }
     @Test
-    void CloneTestStructure() {
+    public void CloneTestStructure() {
         SudokuField[] structure = new SudokuField[9];
         SudokuField[] structure1 = new SudokuField[9];
         for (int i = 0; i < 9; i++) {

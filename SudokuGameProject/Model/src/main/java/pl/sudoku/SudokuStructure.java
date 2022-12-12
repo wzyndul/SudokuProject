@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public abstract class SudokuStructure {
     private List<SudokuField> structure;
 
-    SudokuStructure(SudokuField[] fields) {
+    public SudokuStructure(SudokuField[] fields) {
         this.structure = Arrays.asList(fields);
     }
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileSudokuBoardDaoTest {
+public class FileSudokuBoardDaoTest {
 
     private SudokuBoard sudokuBoard;
     private SudokuBoard sudokuBoard1;
@@ -23,7 +23,7 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void writeReadTest() {
+    public void writeReadTest() {
         fileSudokuBoardDao = factory.getFileDao("new_file.txt");
         fileSudokuBoardDao.write(sudokuBoard);
 
@@ -40,7 +40,7 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void writeExceptionTest() {
+    public void writeExceptionTest() {
         fileSudokuBoardDao = factory.getFileDao("??????????.txt");
         assertThrows(RuntimeException.class, () -> {
             fileSudokuBoardDao.write(sudokuBoard);
@@ -48,7 +48,7 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void readExceptionTest() {
+    public void readExceptionTest() {
         fileSudokuBoardDao = factory.getFileDao("empty.txt");
         assertThrows(RuntimeException.class, () -> {
             fileSudokuBoardDao.read();
@@ -56,7 +56,7 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void closeTest() throws Exception {
+    public void closeTest() throws Exception {
         fileSudokuBoardDao = factory.getFileDao("file.txt");
         fileSudokuBoardDao.close();
     }

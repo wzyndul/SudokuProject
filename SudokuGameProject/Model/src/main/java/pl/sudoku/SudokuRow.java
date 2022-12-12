@@ -1,7 +1,7 @@
 package pl.sudoku;
 
 public class SudokuRow extends SudokuStructure implements Cloneable {
-    SudokuRow(SudokuField[] fields) {
+    public SudokuRow(SudokuField[] fields) {
         super(fields);
     }
 

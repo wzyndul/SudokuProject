@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SudokuFieldsTest {
+public class SudokuFieldsTest {
 
     @Test
     public void setGetFieldValueTest() {
@@ -20,7 +20,7 @@ class SudokuFieldsTest {
 
 
     @Test
-    void HashCodeAndEqualsTest() {
+    public void HashCodeAndEqualsTest() {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuField a = new SudokuField();
         SudokuField b = new SudokuField();
@@ -45,13 +45,13 @@ class SudokuFieldsTest {
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
         SudokuField b = new SudokuField();
         assertNotEquals(b.toString(), null);
     }
 
     @Test
-    void CloneTestField() throws CloneNotSupportedException {
+    public void CloneTestField() throws CloneNotSupportedException {
         SudokuField field = new SudokuField();
         field.setFieldValue(2);
         SudokuField copiedField = field.clone();
@@ -66,7 +66,7 @@ class SudokuFieldsTest {
     }
 
     @Test
-    void compareToTest() {
+    public void compareToTest() {
         SudokuField field1 = new SudokuField();
         SudokuField field2 = new SudokuField();
         field1.setFieldValue(1);

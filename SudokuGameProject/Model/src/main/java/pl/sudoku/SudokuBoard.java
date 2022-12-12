@@ -15,7 +15,7 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     private final SudokuSolver sudokuSolver;
 
-    SudokuBoard(SudokuSolver solver) {
+    public SudokuBoard(SudokuSolver solver) {
         sudokuSolver = solver;
         SudokuField[] table = new SudokuField[size];
         for (int i = 0; i < size; ++i) {
