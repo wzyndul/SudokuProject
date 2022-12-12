@@ -132,8 +132,8 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     @Override
     public SudokuBoard clone() {
-        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
-        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+
+        SudokuBoard sudokuBoard = new SudokuBoard(this.sudokuSolver);
         int k = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
