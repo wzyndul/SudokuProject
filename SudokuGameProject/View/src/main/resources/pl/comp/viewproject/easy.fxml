@@ -13,5 +13,10 @@
          </font>
       </Label>
       <Button layoutX="246.0" layoutY="127.0" mnemonicParsing="false" onAction="#switchToScenewhichLevel" text="GO BACK TO MENU" />
+      <Button layoutX="234.0" layoutY="272.0" mnemonicParsing="false" onAction="#switchToScenegame" text="START GAME">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
