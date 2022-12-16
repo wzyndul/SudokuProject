@@ -1,6 +1,8 @@
 package pl.sudoku;
 
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -131,17 +133,26 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     @Override
-    public SudokuBoard clone() { //do poprawycd
-        SudokuBoard sudokuBoard = new SudokuBoard(this.sudokuSolver);
-        int k = 0;
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                sudokuBoard.set(i, j, Collections.unmodifiableList(board).get(k).getFieldValue());
-                k++;
+    public SudokuBoard clone() {
+        String solverName = this.sudokuSolver.getClass().getCanonicalName();
+        try {
+            Class<?> myClass =  Class.forName((solverName));
+            Constructor<?> constructor = myClass.getConstructor();
+            Object solver = constructor.newInstance();
+            SudokuBoard sudokuBoard = new SudokuBoard((SudokuSolver) solver);
+            int k = 0;
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    sudokuBoard.set(i, j, Collections.unmodifiableList(board)
+                            .get(k).getFieldValue());
+                    k++;
+                }
             }
+            return sudokuBoard;
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException
+                 | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
         }
-        return sudokuBoard;
-
     }
 }
 

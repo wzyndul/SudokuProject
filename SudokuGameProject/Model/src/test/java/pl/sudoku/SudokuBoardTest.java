@@ -109,7 +109,7 @@ public class SudokuBoardTest {
         assertNotEquals(sudokuBoard.toString(), null);
     }
     @Test
-    public void cloneTest() {
+    public void cloneTest() {  // nie sa przetestowane tamte wyjatki
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -120,7 +120,6 @@ public class SudokuBoardTest {
         sudokuBoard.set(0,0, sudokuBoardCloned.get(0,1)); //ustawiam w tym boardzie wartosc z 2
         assertFalse(sudokuBoard.equals(sudokuBoardCloned));
         assertNotSame(sudokuBoard, sudokuBoardCloned);
-
 
     }
 
