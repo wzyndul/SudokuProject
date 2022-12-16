@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.SceneController">
    <children>
       <Label layoutX="115.0" layoutY="46.0" text="choose a difficulty level">
@@ -13,17 +12,17 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="63.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToSceneEasy" text="EASY">
+      <Button fx:id="buttonEasy" layoutX="63.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToEasy" text="EASY">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="247.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToSceneMedium" text="MEDIUM">
+      <Button fx:id="buttonMedium" layoutX="247.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToMedium" text="MEDIUM">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="446.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToSceneHard" text="HARD">
+      <Button fx:id="buttonHard" layoutX="446.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToHard" text="HARD">
          <font>
             <Font size="20.0" />
          </font>
