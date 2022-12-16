@@ -19,7 +19,6 @@ public enum Level {
         return value;
     }
 
-    ;
 
     public void removeFields(Level level, SudokuBoard sudokuBoard) {   //tutaj bedzie juz clone
         int howManyToRemove = level.getValue();                        //(??????????)
