@@ -1,22 +1,13 @@
 package pl.comp.viewproject;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.ResourceBundle;
-
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
+
 import pl.sudoku.*;
 
 public class GameController {

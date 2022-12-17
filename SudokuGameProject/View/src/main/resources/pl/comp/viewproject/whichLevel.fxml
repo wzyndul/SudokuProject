@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.SceneController">
    <children>
       <Label layoutX="98.0" layoutY="41.0" text="%titleLevel">
          <font>
@@ -43,8 +43,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="263.0" layoutY="459.0" text="%langName" />
-      <Button layoutX="199.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToPolish" text="%plLan" />
-      <Button layoutX="353.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToEnglish" text="%engLan" />
+      <Label fx:id="chooseLan" layoutX="253.0" layoutY="459.0" text="%langName" />
+      <Button fx:id="ButtonPolish" layoutX="199.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToPolish" text="%plLan" />
+      <Button fx:id="buttonEnglish" layoutX="353.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToEnglish" text="%engLan" />
+      <Button fx:id="showAut" layoutX="219.0" layoutY="573.0" mnemonicParsing="false" onAction="#showAuthors" text="%showAut">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

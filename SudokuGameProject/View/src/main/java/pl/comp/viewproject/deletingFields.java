@@ -1,7 +1,6 @@
 package pl.comp.viewproject;
 
 import pl.sudoku.SudokuBoard;
-
 import java.util.ArrayList;
 import java.util.Collections;
 

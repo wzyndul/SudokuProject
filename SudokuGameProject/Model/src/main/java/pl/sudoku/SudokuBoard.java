@@ -136,7 +136,7 @@ public class SudokuBoard implements Serializable, Cloneable {
     public SudokuBoard clone() {
         String solverName = this.sudokuSolver.getClass().getCanonicalName();
         try {
-            Class<?> myClass =  Class.forName((solverName));
+            Class<?> myClass =  Class.forName(solverName);
             Constructor<?> constructor = myClass.getConstructor();
             Object solver = constructor.newInstance();
             SudokuBoard sudokuBoard = new SudokuBoard((SudokuSolver) solver);
