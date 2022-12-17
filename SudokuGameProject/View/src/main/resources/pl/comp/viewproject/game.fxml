@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.GameController">
    <children>
       <GridPane fx:id="sudokuGrid" prefHeight="540.0" prefWidth="540.0" />
-      <Button layoutX="179.0" layoutY="569.0" mnemonicParsing="false" onAction="#switchToScenewhichLevel" text="GO BACK TO MENU">
+      <Button layoutX="172.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchToScenewhichLevel" text="%buutonMenu">
          <font>
             <Font size="18.0" />
          </font>

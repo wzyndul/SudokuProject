@@ -6,42 +6,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.viewproject.SceneController">
    <children>
-      <Label layoutX="115.0" layoutY="46.0" text="choose a difficulty level">
+      <Label layoutX="98.0" layoutY="41.0" text="%titleLevel">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="buttonEasy" layoutX="66.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" text="EASY">
+      <Button fx:id="buttonEasy" layoutX="65.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" text="%lvlEASY">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="buttonMedium" layoutX="247.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToMedium" text="MEDIUM">
+      <Button fx:id="buttonMedium" layoutX="240.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToMedium" text="%lvlMEDIUM">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="buttonHard" layoutX="451.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToHard" text="HARD">
+      <Button fx:id="buttonHard" layoutX="451.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToHard" text="%lvlHARD">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="buttonLoad" layoutX="214.0" layoutY="330.0" mnemonicParsing="false" onAction="#LoadSudoku" text="Load sudoku file">
+      <Button fx:id="buttonLoad" layoutX="208.0" layoutY="356.0" mnemonicParsing="false" onAction="#LoadSudoku" text="%buttonLoadFile">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="myTextField" layoutX="176.0" layoutY="263.0">
+      <TextField fx:id="myTextField" layoutX="176.0" layoutY="278.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Label layoutX="88.0" layoutY="200.0" text="or write name of the file to load existing sudoku">
+      <Label layoutX="96.0" layoutY="229.0" text="%loadFileInfo">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <Label layoutX="263.0" layoutY="459.0" text="%langName" />
+      <Button layoutX="199.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToPolish" text="%plLan" />
+      <Button layoutX="353.0" layoutY="524.0" mnemonicParsing="false" onAction="#switchToEnglish" text="%engLan" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package pl.comp.viewproject;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -22,7 +23,7 @@ public class GameController {
     @FXML
     private GridPane sudokuGrid;
 
-
+    private ResourceBundle bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
     private SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
     private SudokuBoard sudokuBoardClone;
 
@@ -64,10 +65,6 @@ public class GameController {
     }
 
     public void switchToScenewhichLevel(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("whichLevel.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StageSetup.buildStage("whichLevel.fxml", bundle);
     }
 }

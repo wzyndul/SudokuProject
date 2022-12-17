@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class SceneController {
@@ -22,22 +24,13 @@ public class SceneController {
 
     private static Level level;
     private static String input;
+    private String language;
 
     public static String getInput() {
         return input;
     }
+    private ResourceBundle bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
 
-    @FXML
-    private Button buttonEasy = new Button("Easy");
-
-    @FXML
-    private Button buttonMedium = new Button("Medium");
-
-    @FXML
-    private Button buttonHard = new Button("Hard");
-
-    @FXML
-    private Button buttonLoad = new Button("Load sudoku");
 
     @FXML
     private TextField myTextField = new TextField();
@@ -46,42 +39,39 @@ public class SceneController {
         return level;
     }
 
-
+    @FXML
     public void switchToEasy(ActionEvent event) throws IOException {
         level = Level.EASY;
-        root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage) buttonEasy.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StageSetup.buildStage("game.fxml", bundle);
     }
-
+    @FXML
     public void switchToMedium(ActionEvent event) throws IOException {
         level = Level.MEDIUM;
-        root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage) buttonMedium.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StageSetup.buildStage("game.fxml", bundle);
     }
 
+    @FXML
     public void switchToHard(ActionEvent event) throws IOException {
         level = Level.HARD;
-        root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage) buttonHard.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StageSetup.buildStage("game.fxml", bundle);
     }
-
+    @FXML
     public void LoadSudoku(ActionEvent event) throws IOException {
         input = myTextField.getText();
-        root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage) buttonLoad.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println(getInput());
+        StageSetup.buildStage("game.fxml", bundle);
 
     }
+    @FXML
+    public void switchToPolish(ActionEvent event) throws IOException{
+        language = "pl";
+        Locale.setDefault(new Locale(language));
+        StageSetup.buildStage("whichLevel.fxml", bundle);
+    }
+    @FXML
+    public void switchToEnglish(ActionEvent event) throws IOException{
+        language = "en";
+        Locale.setDefault(new Locale(language));
+        StageSetup.buildStage("whichLevel.fxml", bundle);
+    }
+
 }
