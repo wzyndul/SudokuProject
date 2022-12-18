@@ -174,7 +174,7 @@ public class SudokuBoard implements Serializable, Cloneable {
             return sudokuBoard;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException
                  | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            throw new SudokuBoardException("Blad podczas klonowania", e);
         }
     }
 }

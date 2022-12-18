@@ -12,12 +12,13 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import pl.sudoku.*;
 import pl.sudoku.exception.DaoException;
+import pl.sudoku.exception.WriteReadException;
 
 public class GameController {
     @FXML
     private GridPane sudokuGrid;
 
-    private ResourceBundle bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
+    private ResourceBundle bundle = ResourceBundle.getBundle("Language");
     private SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
     private SudokuBoard sudokuBoardClone;
 
@@ -77,7 +78,7 @@ public class GameController {
             fileSudokuBoardDao = factory.getFileDao(file.getAbsolutePath());
             fileSudokuBoardDao.write(sudokuBoard);
         } catch (NullPointerException e) {
-            throw new RuntimeException(e);
+            throw new WriteReadException(e);
         }
 
     }

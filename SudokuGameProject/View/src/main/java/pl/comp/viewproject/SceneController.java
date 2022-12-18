@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import pl.sudoku.Dao;
 import pl.sudoku.SudokuBoard;
 import pl.sudoku.SudokuBoardDaoFactory;
+import pl.sudoku.exception.GuiException;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -28,7 +29,7 @@ public class SceneController {
     private Dao<SudokuBoard> fileSudokuBoardDao;
     private static SudokuBoard sudokuBoardFromFile;
 
-    private ResourceBundle bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
+    private ResourceBundle bundle = ResourceBundle.getBundle("Language");
 
 
     @FXML
@@ -39,49 +40,47 @@ public class SceneController {
     }
 
     @FXML
-    public void switchToEasy(ActionEvent event) throws IOException {
+    public void switchToEasy(ActionEvent event) throws GuiException {
         level = Level.EASY;
         StageSetup.buildStage("game.fxml", bundle);
     }
 
     @FXML
-    public void switchToMedium(ActionEvent event) throws IOException {
+    public void switchToMedium(ActionEvent event) throws GuiException {
         level = Level.MEDIUM;
         StageSetup.buildStage("game.fxml", bundle);
     }
 
     @FXML
-    public void switchToHard(ActionEvent event) throws IOException {
+    public void switchToHard(ActionEvent event) throws GuiException {
         level = Level.HARD;
         StageSetup.buildStage("game.fxml", bundle);
     }
 
 
     @FXML
-    public void switchToPolish(ActionEvent event) throws IOException {
+    public void switchToPolish(ActionEvent event) throws GuiException {
         language = "pl";
         Locale.setDefault(new Locale(language));
-        bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
+        bundle = ResourceBundle.getBundle("Language");
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
 
     @FXML
-    public void switchToEnglish(ActionEvent event) throws IOException {
+    public void switchToEnglish(ActionEvent event) throws GuiException {
         language = "en";
         Locale.setDefault(new Locale(language));
-        bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
+        bundle = ResourceBundle.getBundle("Language");
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
 
     @FXML
-    public void showAuthors(ActionEvent event) throws IOException {
+    public void showAuthors(ActionEvent event)  {
         Developers developers = new Developers();
         Stage stage = new Stage();
         VBox vbox = new VBox();
         TextField firstDeveloper = new TextField(developers.getObject("Kuba").toString());
         TextField secondDeveloper = new TextField(developers.getObject("Wojtek").toString());
-
-
         vbox.getChildren().add(firstDeveloper);
         vbox.getChildren().add(secondDeveloper);
         Scene stageScene = new Scene(vbox, 400, 300);
@@ -91,7 +90,7 @@ public class SceneController {
     }
 
     @FXML
-    public void onActionReadFromFile(ActionEvent actionEvent) {
+    public void onActionReadFromFile(ActionEvent actionEvent) throws GuiException {
         String filename;
         fileChooser = new FileChooser();
         try {
@@ -100,7 +99,7 @@ public class SceneController {
             sudokuBoardFromFile = fileSudokuBoardDao.read();
             StageSetup.buildStage("game.fxml", bundle);
         } catch (NullPointerException | IOException e) {
-            throw new RuntimeException(e); //na raazie tak
+            throw new GuiException(e);
         }
     }
     public static SudokuBoard getSudokuBoardFromFile() {
