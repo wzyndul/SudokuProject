@@ -55,37 +55,51 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public SudokuRow getRow(int y) {
-        SudokuField[] table = new SudokuField[9];
-        for (int i = 0; i < 9; i++) {
-            table[i] = new SudokuField();
-            table[i].setFieldValue(board.get(updateCoordinates(y, i)).getFieldValue());
+        try {
+            SudokuField[] table = new SudokuField[9];
+            for (int i = 0; i < 9; i++) {
+                table[i] = new SudokuField();
+                table[i].setFieldValue(board.get(updateCoordinates(y, i)).getFieldValue());
+            }
+            return new SudokuRow(table);
+        } catch (IndexOutOfBoundsException e) {
+            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
         }
-        return new SudokuRow(table);
     }
 
     public SudokuColumn getColumn(int x) {
-        SudokuField[] table = new SudokuField[9];
-        for (int i = 0; i < 9; i++) {
-            table[i] = new SudokuField();
-            table[i].setFieldValue(board.get(updateCoordinates(i, x)).getFieldValue());
+        try {
+            SudokuField[] table = new SudokuField[9];
+            for (int i = 0; i < 9; i++) {
+                table[i] = new SudokuField();
+                table[i].setFieldValue(board.get(updateCoordinates(i, x)).getFieldValue());
+            }
+            return new SudokuColumn(table);
+        } catch (IndexOutOfBoundsException e) {
+            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
         }
-        return new SudokuColumn(table);
     }
 
     public SudokuBox getBox(int x, int y) {
-        SudokuField[] table = new SudokuField[9];
-        int rowStart = x - x % 3;
-        int colStart = y - y % 3;
-        int index = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                table[index] = new SudokuField();
-                table[index].setFieldValue(
-                        board.get(updateCoordinates(rowStart + i, colStart + j)).getFieldValue());
-                index++;
+        try {
+            SudokuField[] table = new SudokuField[9];
+            int rowStart = x - x % 3;
+            int colStart = y - y % 3;
+            int index = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    table[index] = new SudokuField();
+                    table[index].setFieldValue(
+                            board.get(updateCoordinates(rowStart + i, colStart + j))
+                                    .getFieldValue());
+                    index++;
+                }
             }
+            return new SudokuBox(table);
+        } catch (IndexOutOfBoundsException e) {
+            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
         }
-        return new SudokuBox(table);
+
     }
 
     private boolean checkBoard() {

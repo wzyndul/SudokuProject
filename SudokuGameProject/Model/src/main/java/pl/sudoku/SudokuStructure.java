@@ -16,7 +16,7 @@ public abstract class SudokuStructure {
         try {
             this.structure = Arrays.asList(fields);
         } catch (NullPointerException e) {
-            throw new SudokuStructureException("Obiekt jest nullem", e.getCause());
+            throw new SudokuStructureException("obiekt jest nullem", e.getCause());
         }
     }
 

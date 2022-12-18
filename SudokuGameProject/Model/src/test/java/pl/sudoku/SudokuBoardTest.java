@@ -2,6 +2,8 @@ package pl.sudoku;
 
 import org.junit.jupiter.api.Test;
 import pl.sudoku.exception.SudokuBoardException;
+import pl.sudoku.exception.SudokuFieldException;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import static org.junit.jupiter.api.Assertions.*;
@@ -131,6 +133,27 @@ public class SudokuBoardTest {
         assertFalse(sudokuBoard.equals(sudokuBoardCloned));
         assertNotSame(sudokuBoard, sudokuBoardCloned);
 
+    }
+    @Test
+    public void getRowBoxColumnExceptionTest() {
+        BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
+        SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
+        sudokuBoard.solveGame();
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.getColumn(10);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.getColumn(-1);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.getRow(10);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.getRow(-1);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.getBox(10,10);
+        });
     }
 
 

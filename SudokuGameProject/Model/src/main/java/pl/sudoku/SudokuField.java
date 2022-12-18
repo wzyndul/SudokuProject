@@ -10,6 +10,7 @@ import pl.sudoku.exception.SudokuFieldException;
 public class SudokuField implements Serializable, Comparable<SudokuField>, Cloneable {
     private int value;
 
+
     public int getFieldValue() {
         return value;
     }
@@ -18,7 +19,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
         if (value > -1 && value < 10) {
             this.value = value;
         } else {
-            throw new SudokuFieldException("Wartosc nie jest w poprawnym zakresie");
+            throw new SudokuFieldException("Wartosc powinna byc z zakresu 0-9");
         }
     }
 
@@ -60,7 +61,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
                 return -1;
             }
         } catch (NullPointerException e) {
-            throw new SudokuFieldException("Porownywany obiekt jest nullem", e.getCause());
+            throw new SudokuFieldException("obiekt jest nullem", e.getCause());
         }
 
     }

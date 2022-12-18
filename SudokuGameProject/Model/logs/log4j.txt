@@ -1,1 +1,1 @@
-[INFO ] 2022-12-18 16:53:44.105 [main] SudokuStructureTest - logi dzialaja
+[INFO ] 2022-12-18 20:12:31.615 [main] SudokuStructureTest - logi dzialaja

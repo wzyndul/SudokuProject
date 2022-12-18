@@ -55,6 +55,14 @@ public class GameController {
             }
         }
     }
+    public void isSolved() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+               // String value = sudokuGrid.getChildren().get(i * 9 + j).getText();
+
+            }
+        }
+    }
 
     public void switchToScenewhichLevel(ActionEvent event) throws IOException {
         StageSetup.buildStage("whichLevel.fxml", bundle);
