@@ -1,12 +1,9 @@
 package pl.sudoku;
 
 import org.junit.jupiter.api.Test;
-import pl.sudoku.BacktrackingSudokuSolver;
-import pl.sudoku.SudokuBoard;
-
+import pl.sudoku.exception.SudokuBoardException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SudokuBoardTest {
@@ -17,6 +14,18 @@ public class SudokuBoardTest {
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.set(0, 0, 9);
         assertEquals(sudokuBoard.get(0, 0), 9);
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.set(9, 10, 9);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.set(-1, -10, 9);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.get(10, 10);
+        });
+        assertThrows(SudokuBoardException.class, () -> {
+            sudokuBoard.get(-1, -10);
+        });
     }
 
 
@@ -108,6 +117,7 @@ public class SudokuBoardTest {
         sudokuBoard.solveGame();
         assertNotEquals(sudokuBoard.toString(), null);
     }
+
     @Test
     public void cloneTest() {  // nie sa przetestowane tamte wyjatki
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
@@ -117,7 +127,7 @@ public class SudokuBoardTest {
         assertNotNull(sudokuBoardCloned);
         assertTrue(sudokuBoard.equals(sudokuBoardCloned));
         assertNotSame(sudokuBoard, sudokuBoardCloned);
-        sudokuBoard.set(0,0, sudokuBoardCloned.get(0,1)); //ustawiam w tym boardzie wartosc z 2
+        sudokuBoard.set(0, 0, sudokuBoardCloned.get(0, 1)); //ustawiam w tym boardzie wartosc z 2
         assertFalse(sudokuBoard.equals(sudokuBoardCloned));
         assertNotSame(sudokuBoard, sudokuBoardCloned);
 

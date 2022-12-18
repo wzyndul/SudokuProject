@@ -60,7 +60,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
                 return -1;
             }
         } catch (NullPointerException e) {
-            throw new SudokuFieldException("Obiekt jest nullem", e.getCause());
+            throw new SudokuFieldException("Porownywany obiekt jest nullem", e.getCause());
         }
 
     }

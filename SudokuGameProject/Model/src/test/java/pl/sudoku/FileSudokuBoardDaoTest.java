@@ -2,6 +2,8 @@ package pl.sudoku;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.sudoku.exception.DaoException;
+import pl.sudoku.exception.WriteReadException;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,11 +25,13 @@ public class FileSudokuBoardDaoTest {
     }
 
     @Test
-    public void writeReadTest() {
+    public void writeReadTest() throws DaoException {
         fileSudokuBoardDao = factory.getFileDao("new_file.txt");
+
         fileSudokuBoardDao.write(sudokuBoard);
 
         sudokuBoard1 = fileSudokuBoardDao.read();
+
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 assertEquals(sudokuBoard.get(i, j), sudokuBoard1.get(i, j));
@@ -35,14 +39,13 @@ public class FileSudokuBoardDaoTest {
         }
         assertEquals(sudokuBoard.hashCode(), sudokuBoard1.hashCode());
         assertEquals(sudokuBoard, sudokuBoard1);
-
         assertTrue(sudokuBoard1.equals(sudokuBoard));
     }
 
     @Test
     public void writeExceptionTest() {
         fileSudokuBoardDao = factory.getFileDao("??????????.txt");
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(WriteReadException.class, () -> {
             fileSudokuBoardDao.write(sudokuBoard);
         });
     }
@@ -50,14 +53,18 @@ public class FileSudokuBoardDaoTest {
     @Test
     public void readExceptionTest() {
         fileSudokuBoardDao = factory.getFileDao("empty.txt");
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(WriteReadException.class, () -> {
             fileSudokuBoardDao.read();
         });
     }
 
     @Test
-    public void closeTest() throws Exception {
+    public void closeTest() throws WriteReadException {
         fileSudokuBoardDao = factory.getFileDao("file.txt");
-        fileSudokuBoardDao.close();
+        try {
+            fileSudokuBoardDao.close();
+        } catch (Exception e) {
+            throw new WriteReadException(e);
+        }
     }
 }

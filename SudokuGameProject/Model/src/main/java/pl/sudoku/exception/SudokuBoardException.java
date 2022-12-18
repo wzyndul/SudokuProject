@@ -1,6 +1,6 @@
 package pl.sudoku.exception;
 
-public class SudokuBoardException extends RuntimeException {
+public class SudokuBoardException extends SudokuException {
     public SudokuBoardException(String message) {
         super(message);
     }

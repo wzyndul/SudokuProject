@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
 import pl.sudoku.*;
+import pl.sudoku.exception.DaoException;
 
 public class GameController {
     @FXML
@@ -23,7 +24,7 @@ public class GameController {
     private Dao<SudokuBoard> fileSudokuBoardDao;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws DaoException {
         if (SceneController.getInput() == "" || SceneController.getInput() == null) {
             sudokuBoard.solveGame();
             sudokuBoardClone = sudokuBoard.clone();

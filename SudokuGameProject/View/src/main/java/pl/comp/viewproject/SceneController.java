@@ -62,6 +62,7 @@ public class SceneController {
     public void switchToPolish(ActionEvent event) throws IOException {
         language = "pl";
         Locale.setDefault(new Locale(language));
+        bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
 
@@ -69,6 +70,7 @@ public class SceneController {
     public void switchToEnglish(ActionEvent event) throws IOException {
         language = "en";
         Locale.setDefault(new Locale(language));
+        bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
     @FXML

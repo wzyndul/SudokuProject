@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import pl.sudoku.exception.SudokuBoardException;
+
 
 public class SudokuBoard implements Serializable, Cloneable {
     private final int size = 81;
@@ -18,7 +20,7 @@ public class SudokuBoard implements Serializable, Cloneable {
     private final SudokuSolver sudokuSolver;
 
     public SudokuBoard(SudokuSolver solver) {
-        sudokuSolver = solver;
+        this.sudokuSolver = solver;
         SudokuField[] table = new SudokuField[size];
         for (int i = 0; i < size; ++i) {
             table[i] = new SudokuField();
@@ -31,15 +33,22 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public int get(int x, int y) {
-        return board.get(updateCoordinates(x, y)).getFieldValue();
+        try {
+            return board.get(updateCoordinates(x, y)).getFieldValue();
+        } catch (IndexOutOfBoundsException e) {
+            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+        }
     }
 
     public void set(int x, int y, int value) {
-        board.get(updateCoordinates(x, y)).setFieldValue(value);
+        try {
+            board.get(updateCoordinates(x, y)).setFieldValue(value);
+        } catch (IndexOutOfBoundsException e) {
+            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+        }
     }
 
     public void solveGame() {
-
         sudokuSolver.solve(this);
         checkBoard();         //w przyszlsoci mozemy dodac tutaj jakies sprawdzenie
         //czy wszystko jest ok (ale zawsze bedzie) bo solve poprawnie wypelnia
@@ -136,7 +145,7 @@ public class SudokuBoard implements Serializable, Cloneable {
     public SudokuBoard clone() {
         String solverName = this.sudokuSolver.getClass().getCanonicalName();
         try {
-            Class<?> myClass =  Class.forName(solverName);
+            Class<?> myClass = Class.forName(solverName);
             Constructor<?> constructor = myClass.getConstructor();
             Object solver = constructor.newInstance();
             SudokuBoard sudokuBoard = new SudokuBoard((SudokuSolver) solver);
