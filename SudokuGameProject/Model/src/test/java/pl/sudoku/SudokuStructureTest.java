@@ -1,6 +1,8 @@
 package pl.sudoku;
 
 import org.junit.jupiter.api.Test;
+import pl.sudoku.exception.SudokuFieldException;
+import pl.sudoku.exception.SudokuStructureException;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +16,10 @@ public class SudokuStructureTest {
             structure[i] = new SudokuField();
             structure[i].setFieldValue(i + 1);
         }
+        assertThrows(SudokuStructureException.class, () -> {
+            SudokuRow sudokuRowTest = new SudokuRow(null);
+        });
+
 
         SudokuRow sudokuRow = new SudokuRow(structure);
         assertTrue(sudokuRow.verify());

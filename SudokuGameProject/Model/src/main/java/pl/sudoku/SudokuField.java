@@ -4,6 +4,7 @@ import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import pl.sudoku.exception.SudokuFieldException;
 
 
 public class SudokuField implements Serializable, Comparable<SudokuField>, Cloneable {
@@ -16,6 +17,8 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
     public void setFieldValue(int value) {
         if (value > -1 && value < 10) {
             this.value = value;
+        } else {
+            throw new SudokuFieldException("Wartosc nie jest w poprawnym zakresie");
         }
     }
 
@@ -48,7 +51,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
 
     @Override
     public int compareTo(SudokuField o) {
-        if (o != null) {
+        try {
             if (this.getFieldValue() == o.getFieldValue()) {
                 return 0;
             } else if (this.getFieldValue() > o.getFieldValue()) {
@@ -56,9 +59,10 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
             } else {
                 return -1;
             }
-        } else {
-            throw new NullPointerException("Obiekt jest nullem");
+        } catch (NullPointerException e) {
+            throw new SudokuFieldException("Obiekt jest nullem", e.getCause());
         }
+
     }
 
     @Override

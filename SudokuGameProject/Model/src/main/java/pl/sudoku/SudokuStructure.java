@@ -6,13 +6,18 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import pl.sudoku.exception.SudokuStructureException;
 
 
 public abstract class SudokuStructure {
     private List<SudokuField> structure;
 
     public SudokuStructure(SudokuField[] fields) {
-        this.structure = Arrays.asList(fields);
+        try {
+            this.structure = Arrays.asList(fields);
+        } catch (NullPointerException e) {
+            throw new SudokuStructureException("Obiekt jest nullem", e.getCause());
+        }
     }
 
     public boolean verify() {
