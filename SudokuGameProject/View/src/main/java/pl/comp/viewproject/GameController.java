@@ -3,6 +3,7 @@ package pl.comp.viewproject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -30,13 +31,13 @@ public class GameController {
 
     @FXML
     public void initialize() throws DaoException {
-            if(SceneController.getSudokuBoardFromFile() == null) {
-                sudokuBoard.solveGame();
-                sudokuBoardClone = sudokuBoard.clone();
-                deletingFields.removeFields(SceneController.getLevel(), sudokuBoard);
-            } else {
-                sudokuBoard = SceneController.getSudokuBoardFromFile();
-            }
+        if (SceneController.getSudokuBoardFromFile() == null) {
+            sudokuBoard.solveGame();
+            sudokuBoardClone = sudokuBoard.clone();
+            deletingFields.removeFields(SceneController.getLevel(), sudokuBoard);
+        } else {
+            sudokuBoard = SceneController.getSudokuBoardFromFile();
+        }
 
         fillGridToPlay();
 
@@ -51,16 +52,27 @@ public class GameController {
                 if (sudokuBoard.get(i, j) != 0) {
                     textField.setDisable(true);
                     textField.setText(String.valueOf(sudokuBoard.get(i, j)));
+                } else {
+                    int finalJ = j;
+                    int finalI = i;
+                    textField.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.length() == 1 && newValue.matches("[1-9]")) {
+                            sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue));
+                        } else {
+                            textField.setText("");
+                        }
+                    });
                 }
                 textField.setFont(Font.font(25));
                 sudokuGrid.add(textField, i, j);
             }
         }
     }
+
     public void isSolved() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-               // String value = sudokuGrid.getChildren().get(i * 9 + j).getText();
+                // String value = sudokuGrid.getChildren().get(i * 9 + j).getText();
 
             }
         }
