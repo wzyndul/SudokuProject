@@ -5,7 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
+import pl.sudoku.Dao;
+import pl.sudoku.SudokuBoard;
+import pl.sudoku.SudokuBoardDaoFactory;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -16,12 +21,12 @@ public class SceneController {
 
 
     private static Level level;
-    private static String input;
+    @FXML
+    private FileChooser fileChooser;
     private String language;
-
-    public static String getInput() {
-        return input;
-    }
+    private SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
+    private Dao<SudokuBoard> fileSudokuBoardDao;
+    private static SudokuBoard sudokuBoardFromFile;
 
     private ResourceBundle bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
 
@@ -51,12 +56,6 @@ public class SceneController {
         StageSetup.buildStage("game.fxml", bundle);
     }
 
-    @FXML
-    public void LoadSudoku(ActionEvent event) throws IOException {
-        input = myTextField.getText();
-        StageSetup.buildStage("game.fxml", bundle);
-
-    }
 
     @FXML
     public void switchToPolish(ActionEvent event) throws IOException {
@@ -73,6 +72,7 @@ public class SceneController {
         bundle = ResourceBundle.getBundle("pl.comp.viewproject/Language");
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
+
     @FXML
     public void showAuthors(ActionEvent event) throws IOException {
         Developers developers = new Developers();
@@ -88,6 +88,23 @@ public class SceneController {
         stage.setTitle(bundle.getString("popOutAuthors"));
         stage.setScene(stageScene);
         stage.show();
+    }
+
+    @FXML
+    public void onActionReadFromFile(ActionEvent actionEvent) {
+        String filename;
+        fileChooser = new FileChooser();
+        try {
+            filename = fileChooser.showOpenDialog(StageSetup.getStage()).getAbsolutePath();
+            fileSudokuBoardDao = factory.getFileDao(filename);
+            sudokuBoardFromFile = fileSudokuBoardDao.read();
+            StageSetup.buildStage("game.fxml", bundle);
+        } catch (NullPointerException | IOException e) {
+            throw new RuntimeException(e); //na raazie tak
+        }
+    }
+    public static SudokuBoard getSudokuBoardFromFile() {
+        return sudokuBoardFromFile;
     }
 
 

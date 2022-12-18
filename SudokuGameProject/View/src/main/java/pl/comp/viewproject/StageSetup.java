@@ -31,6 +31,8 @@ public class StageSetup {
         stage.sizeToScene();
         stage.show();
     }
-
+    public static Stage getStage() {
+        return stage;
+    }
 
 }

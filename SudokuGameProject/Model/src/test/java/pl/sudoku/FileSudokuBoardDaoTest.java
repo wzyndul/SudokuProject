@@ -59,12 +59,8 @@ public class FileSudokuBoardDaoTest {
     }
 
     @Test
-    public void closeTest() throws WriteReadException {
+    public void closeTest() throws Exception {  //co z tym????????????????????
         fileSudokuBoardDao = factory.getFileDao("file.txt");
-        try {
-            fileSudokuBoardDao.close();
-        } catch (Exception e) {
-            throw new WriteReadException(e);
-        }
+        fileSudokuBoardDao.close();
     }
 }
