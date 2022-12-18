@@ -9,8 +9,6 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import pl.sudoku.exception.SudokuBoardException;
 
 
@@ -22,8 +20,6 @@ public class SudokuBoard implements Serializable, Cloneable {
     private final SudokuSolver sudokuSolver;
 
     public SudokuBoard(SudokuSolver solver) {
-        Logger logger = LogManager.getLogger(SudokuBoard.class);
-        logger.info("HALOOOOOOOOOOOOOOOOOOOo");
         this.sudokuSolver = solver;
         SudokuField[] table = new SudokuField[size];
         for (int i = 0; i < size; ++i) {
