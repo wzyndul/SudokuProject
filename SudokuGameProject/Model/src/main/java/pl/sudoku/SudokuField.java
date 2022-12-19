@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import pl.sudoku.exception.SudokuFieldException;
+import pl.sudoku.exception.SudokuFieldWrongNumberException;
 
 
 public class SudokuField implements Serializable, Comparable<SudokuField>, Cloneable {
@@ -19,7 +20,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
         if (value > -1 && value < 10) {
             this.value = value;
         } else {
-            throw new SudokuFieldException("Wartosc powinna byc z zakresu 0-9");
+            throw new SudokuFieldWrongNumberException("Wartosc powinna byc z zakresu 0-9");
         }
     }
 

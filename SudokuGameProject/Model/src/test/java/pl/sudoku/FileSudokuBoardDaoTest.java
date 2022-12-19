@@ -26,10 +26,9 @@ public class FileSudokuBoardDaoTest {
 
     @Test
     public void writeReadTest() throws DaoException {
+
         fileSudokuBoardDao = factory.getFileDao("new_file.txt");
-
         fileSudokuBoardDao.write(sudokuBoard);
-
         sudokuBoard1 = fileSudokuBoardDao.read();
 
         for (int i = 0; i < 9; i++) {
@@ -59,7 +58,7 @@ public class FileSudokuBoardDaoTest {
     }
 
     @Test
-    public void closeTest() throws Exception {  //co z tym????????????????????
+    public void closeTest() throws Exception {
         fileSudokuBoardDao = factory.getFileDao("file.txt");
         fileSudokuBoardDao.close();
     }

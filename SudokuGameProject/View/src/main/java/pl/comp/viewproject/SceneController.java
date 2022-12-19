@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.FileChooser;
 import pl.sudoku.Dao;
 import pl.sudoku.SudokuBoard;
 import pl.sudoku.SudokuBoardDaoFactory;

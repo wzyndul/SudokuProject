@@ -24,10 +24,10 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
             FileInputStream fileInputStream = new FileInputStream(name);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             obj = (SudokuBoard) objectInputStream.readObject();
+            return obj;
         } catch (ClassNotFoundException | IOException e) {
             throw new WriteReadException(e);
         }
-        return obj;
     }
 
 

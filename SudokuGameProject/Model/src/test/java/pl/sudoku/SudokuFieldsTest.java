@@ -1,6 +1,7 @@
 package pl.sudoku;
 import org.junit.jupiter.api.Test;
 import pl.sudoku.exception.SudokuFieldException;
+import pl.sudoku.exception.SudokuFieldWrongNumberException;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,10 +14,10 @@ public class SudokuFieldsTest {
         sudokufield.setFieldValue(8);
         assertEquals(sudokufield.getFieldValue(), 8);
 
-        assertThrows(SudokuFieldException.class, () -> {
+        assertThrows(SudokuFieldWrongNumberException.class, () -> {
             sudokufield.setFieldValue(23);;
         });
-        assertThrows(SudokuFieldException.class, () -> {
+        assertThrows(SudokuFieldWrongNumberException.class, () -> {
             sudokufield.setFieldValue(-23);;
         });
     }

@@ -21,7 +21,6 @@ public class GameController {
 
     private ResourceBundle bundle = ResourceBundle.getBundle("Language");
     private SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
-    private SudokuBoard sudokuBoardClone;
 
     private deletingFields deletingFields = new deletingFields();
     private SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
@@ -30,17 +29,14 @@ public class GameController {
     private FileChooser fileChooser;
 
     @FXML
-    public void initialize() throws DaoException {
+    public void initialize() {
         if (SceneController.getSudokuBoardFromFile() == null) {
             sudokuBoard.solveGame();
-            sudokuBoardClone = sudokuBoard.clone();
             deletingFields.removeFields(SceneController.getLevel(), sudokuBoard);
         } else {
             sudokuBoard = SceneController.getSudokuBoardFromFile();
         }
-
         fillGridToPlay();
-
     }
 
     private void fillGridToPlay() {
@@ -69,14 +65,6 @@ public class GameController {
         }
     }
 
-    public void isSolved() {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                // String value = sudokuGrid.getChildren().get(i * 9 + j).getText();
-
-            }
-        }
-    }
 
     public void switchToScenewhichLevel(ActionEvent event) throws IOException {
         StageSetup.buildStage("whichLevel.fxml", bundle);
