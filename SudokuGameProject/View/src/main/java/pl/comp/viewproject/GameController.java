@@ -53,7 +53,7 @@ public class GameController {
                     int finalI = i;
                     textField.textProperty().addListener((observable, oldValue, newValue) -> {
                         if (newValue.length() == 1 && newValue.matches("[1-9]")) {
-                            sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue));
+                            sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue)); //popraw
                         } else {
                             textField.setText("");
                         }
