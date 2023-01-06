@@ -12,11 +12,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="buttonEasy" layoutX="50.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" prefHeight="44.0" prefWidth="120.0" text="%lvlEASY">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <Button fx:id="buttonMedium" layoutX="240.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToMedium" prefHeight="44.0" prefWidth="120.0" text="%lvlMEDIUM">
          <font>
             <Font size="20.0" />
@@ -45,6 +40,16 @@
          </font>
       </Button>
       <Button fx:id="loadFILE" layoutX="150.0" layoutY="414.0" mnemonicParsing="false" onAction="#onActionReadFromFile" prefWidth="300.0" text="%buttonLoadFile">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="110.0" layoutY="496.0" mnemonicParsing="false" prefWidth="380.0" text="%buttonLoadFRomDB">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonEasy" layoutX="50.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" prefHeight="44.0" prefWidth="120.0" text="%lvlEASY">
          <font>
             <Font size="20.0" />
          </font>
