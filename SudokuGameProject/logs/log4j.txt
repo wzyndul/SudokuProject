@@ -1,0 +1,1 @@
+[ERROR] 2023-01-07 14:06:52.731 [JavaFX Application Thread] SceneController - Nie ma takiej planszy w bazie danych

@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import pl.sudoku.*;
 import pl.sudoku.exception.DaoException;
+import pl.sudoku.exception.GuiException;
 import pl.sudoku.exception.WriteReadException;
 
 public class GameController {
@@ -21,12 +22,15 @@ public class GameController {
 
     private ResourceBundle bundle = ResourceBundle.getBundle("Language");
     private SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+    private JdbcSudokuBoardDao jdbcSudokuBoardDao;
 
     private deletingFields deletingFields = new deletingFields();
     private SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
     private Dao<SudokuBoard> fileSudokuBoardDao;
     @FXML
     private FileChooser fileChooser;
+    @FXML
+    private TextField saveToDBname;
 
     @FXML
     public void initialize() {
@@ -81,5 +85,16 @@ public class GameController {
             throw new WriteReadException(e);
         }
 
+    }
+
+    public void onActionSaveToDB(ActionEvent actionEvent) throws GuiException {
+        String name = saveToDBname.getText();
+        try {
+            jdbcSudokuBoardDao = (JdbcSudokuBoardDao) factory.getDatabseDao();
+            jdbcSudokuBoardDao.setName(name);
+            jdbcSudokuBoardDao.write(sudokuBoard);
+        } catch (DaoException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

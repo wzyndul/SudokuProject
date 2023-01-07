@@ -7,12 +7,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.sudoku.Dao;
+import pl.sudoku.JdbcSudokuBoardDao;
 import pl.sudoku.SudokuBoard;
 import pl.sudoku.SudokuBoardDaoFactory;
+import pl.sudoku.exception.DaoException;
 import pl.sudoku.exception.GuiException;
 
 import java.io.IOException;
+import java.lang.invoke.WrongMethodTypeException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -26,13 +31,18 @@ public class SceneController {
     private String language;
     private SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
     private Dao<SudokuBoard> fileSudokuBoardDao;
+    private String name;
+    private final Logger log = LoggerFactory.getLogger(SceneController.class);
+
     private static SudokuBoard sudokuBoardFromFile;
+    @FXML
+    private TextField sudokuDB;
 
     private ResourceBundle bundle = ResourceBundle.getBundle("Language");
 
+    public SceneController() {
+    }
 
-    @FXML
-    private TextField myTextField = new TextField();
 
     public static Level getLevel() {
         return level;
@@ -74,7 +84,7 @@ public class SceneController {
     }
 
     @FXML
-    public void showAuthors(ActionEvent event)  {
+    public void showAuthors(ActionEvent event) {
         Developers developers = new Developers();
         Stage stage = new Stage();
         VBox vbox = new VBox();
@@ -101,8 +111,29 @@ public class SceneController {
             throw new GuiException(e);
         }
     }
+
     public static SudokuBoard getSudokuBoardFromFile() {
         return sudokuBoardFromFile;
+    }
+
+    @FXML
+    public void onActionReadFromDB(ActionEvent actionEvent) {
+        try (JdbcSudokuBoardDao jdbcSudokuBoardDao = (JdbcSudokuBoardDao) factory.getDatabseDao()) {
+            name = sudokuDB.getText();
+            if(jdbcSudokuBoardDao.getBoardsNames().contains(name)) {
+                jdbcSudokuBoardDao.setName(name);
+                sudokuBoardFromFile = jdbcSudokuBoardDao.read();
+//            jdbcSudokuBoardDao.metodaTestowa();
+//            jdbcSudokuBoardDao.metodaTestowa2();
+                StageSetup.buildStage("game.fxml", bundle);
+            } else {
+//                throw new WrongMethodTypeException(); tutaj rzuce jakims wyjatkie i elo
+                log.error("Nie ma takiej planszy w bazie danych");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 

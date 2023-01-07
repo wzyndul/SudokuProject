@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,7 +18,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="buttonHard" layoutX="430.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToHard" prefHeight="44.0" prefWidth="120.0" text="%lvlHARD">
+      <Button fx:id="buttonHard" layoutX="430.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" prefHeight="44.0" prefWidth="120.0" text="%lvlHARD">
          <font>
             <Font size="20.0" />
          </font>
@@ -39,12 +40,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="loadFILE" layoutX="150.0" layoutY="414.0" mnemonicParsing="false" onAction="#onActionReadFromFile" prefWidth="300.0" text="%buttonLoadFile">
+      <Button fx:id="loadFILE" layoutX="150.0" layoutY="376.0" mnemonicParsing="false" onAction="#onActionReadFromFile" prefWidth="300.0" text="%buttonLoadFile">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="110.0" layoutY="496.0" mnemonicParsing="false" prefWidth="380.0" text="%buttonLoadFRomDB">
+      <Button layoutX="110.0" layoutY="496.0" mnemonicParsing="false" onAction="#onActionReadFromDB" prefWidth="380.0" text="%buttonLoadFRomDB">
          <font>
             <Font size="20.0" />
          </font>
@@ -54,5 +55,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <TextField fx:id="sudokuDB" layoutX="150.0" layoutY="438.0" prefWidth="300.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
