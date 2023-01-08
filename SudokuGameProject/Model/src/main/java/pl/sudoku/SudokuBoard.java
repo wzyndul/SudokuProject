@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,6 +14,7 @@ import pl.sudoku.exception.SudokuBoardException;
 
 
 public class SudokuBoard implements Serializable, Cloneable {
+    private final transient ResourceBundle bundle = ResourceBundle.getBundle("Language");
     private final int size = 81;
 
     private List<SudokuField> board;
@@ -36,7 +38,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         try {
             return board.get(updateCoordinates(x, y)).getFieldValue();
         } catch (IndexOutOfBoundsException e) {
-            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+            throw new SudokuBoardException(bundle.getString("outOfBounds"), e.getCause());
         }
     }
 
@@ -44,7 +46,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         try {
             board.get(updateCoordinates(x, y)).setFieldValue(value);
         } catch (IndexOutOfBoundsException e) {
-            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+            throw new SudokuBoardException(bundle.getString("outOfBounds"), e.getCause());
         }
     }
 
@@ -63,7 +65,7 @@ public class SudokuBoard implements Serializable, Cloneable {
             }
             return new SudokuRow(table);
         } catch (IndexOutOfBoundsException e) {
-            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+            throw new SudokuBoardException(bundle.getString("outOfBounds"), e.getCause());
         }
     }
 
@@ -76,7 +78,7 @@ public class SudokuBoard implements Serializable, Cloneable {
             }
             return new SudokuColumn(table);
         } catch (IndexOutOfBoundsException e) {
-            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+            throw new SudokuBoardException(bundle.getString("outOfBounds"), e.getCause());
         }
     }
 
@@ -97,7 +99,7 @@ public class SudokuBoard implements Serializable, Cloneable {
             }
             return new SudokuBox(table);
         } catch (IndexOutOfBoundsException e) {
-            throw new SudokuBoardException("Odwolano sie do pola spoza zakresu", e.getCause());
+            throw new SudokuBoardException(bundle.getString("outOfBounds"), e.getCause());
         }
 
     }
@@ -174,7 +176,7 @@ public class SudokuBoard implements Serializable, Cloneable {
             return sudokuBoard;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException
                  | IllegalAccessException | InvocationTargetException e) {
-            throw new SudokuBoardException("Blad podczas klonowania", e);
+            throw new SudokuBoardException(bundle.getString("cloneError"), e);
         }
     }
 }

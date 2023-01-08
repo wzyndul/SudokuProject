@@ -3,6 +3,7 @@ package pl.sudoku;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -11,12 +12,13 @@ import pl.sudoku.exception.SudokuStructureException;
 
 public abstract class SudokuStructure {
     private List<SudokuField> structure;
+    private final  ResourceBundle bundle = ResourceBundle.getBundle("Language");
 
     public SudokuStructure(SudokuField[] fields) {
         try {
             this.structure = Arrays.asList(fields);
         } catch (NullPointerException e) {
-            throw new SudokuStructureException("obiekt jest nullem", e.getCause());
+            throw new SudokuStructureException(bundle.getString("nullObject"), e.getCause());
         }
     }
 

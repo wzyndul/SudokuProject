@@ -7,17 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pl.sudoku.Dao;
 import pl.sudoku.JdbcSudokuBoardDao;
 import pl.sudoku.SudokuBoard;
 import pl.sudoku.SudokuBoardDaoFactory;
-import pl.sudoku.exception.DaoException;
 import pl.sudoku.exception.GuiException;
+import pl.sudoku.exception.JdbcException;
 
 import java.io.IOException;
-import java.lang.invoke.WrongMethodTypeException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -26,14 +23,14 @@ public class SceneController {
 
 
     private static Level level;
+    private static boolean isFromOutside = false;
     @FXML
     private FileChooser fileChooser;
     private String language;
     private SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
     private Dao<SudokuBoard> fileSudokuBoardDao;
     private String name;
-    private final Logger log = LoggerFactory.getLogger(SceneController.class);
-
+    private DisplayingMessage displayingMessage = new DisplayingMessage();
     private static SudokuBoard sudokuBoardFromFile;
     @FXML
     private TextField sudokuDB;
@@ -50,18 +47,21 @@ public class SceneController {
 
     @FXML
     public void switchToEasy(ActionEvent event) throws GuiException {
+        setFromOutside(false);
         level = Level.EASY;
         StageSetup.buildStage("game.fxml", bundle);
     }
 
     @FXML
     public void switchToMedium(ActionEvent event) throws GuiException {
+        setFromOutside(false);
         level = Level.MEDIUM;
         StageSetup.buildStage("game.fxml", bundle);
     }
 
     @FXML
     public void switchToHard(ActionEvent event) throws GuiException {
+        setFromOutside(false);
         level = Level.HARD;
         StageSetup.buildStage("game.fxml", bundle);
     }
@@ -99,7 +99,26 @@ public class SceneController {
     }
 
     @FXML
+    public void onActionDisplayBoards(ActionEvent actionEvent) throws GuiException {
+        Stage stage = new Stage();
+        VBox vbox = new VBox();
+        try (JdbcSudokuBoardDao jdbcSudokuBoardDao = (JdbcSudokuBoardDao) factory.getDatabseDao()) {
+            for (String board : jdbcSudokuBoardDao.getBoardsNames()) {
+                TextField textField = new TextField(board);
+                vbox.getChildren().add(textField);
+            }
+            Scene stageScene = new Scene(vbox, 500, 800);
+            stage.setTitle(bundle.getString("namesOfBoards"));
+            stage.setScene(stageScene);
+            stage.show();
+        } catch (Exception e) {
+            throw new GuiException(e);
+        }
+    }
+
+    @FXML
     public void onActionReadFromFile(ActionEvent actionEvent) throws GuiException {
+        setFromOutside(true);
         String filename;
         fileChooser = new FileChooser();
         try {
@@ -117,24 +136,29 @@ public class SceneController {
     }
 
     @FXML
-    public void onActionReadFromDB(ActionEvent actionEvent) {
+    public void onActionReadFromDB(ActionEvent actionEvent) throws GuiException {
+        setFromOutside(true);
         try (JdbcSudokuBoardDao jdbcSudokuBoardDao = (JdbcSudokuBoardDao) factory.getDatabseDao()) {
             name = sudokuDB.getText();
-            if(jdbcSudokuBoardDao.getBoardsNames().contains(name)) {
+            if (jdbcSudokuBoardDao.getBoardsNames().contains(name)) {
                 jdbcSudokuBoardDao.setName(name);
                 sudokuBoardFromFile = jdbcSudokuBoardDao.read();
-//            jdbcSudokuBoardDao.metodaTestowa();
-//            jdbcSudokuBoardDao.metodaTestowa2();
                 StageSetup.buildStage("game.fxml", bundle);
             } else {
-//                throw new WrongMethodTypeException(); tutaj rzuce jakims wyjatkie i elo
-                log.error("Nie ma takiej planszy w bazie danych");
+                displayingMessage.showMassage(bundle.getString("boardDoesntExist"));
+                throw new JdbcException(bundle.getString("boardDoesntExist"));
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new GuiException(e);
         }
 
     }
 
+    public static boolean isFromOutside() {
+        return isFromOutside;
+    }
 
+    public static void setFromOutside(boolean fromOutside) {
+        isFromOutside = fromOutside;
+    }
 }

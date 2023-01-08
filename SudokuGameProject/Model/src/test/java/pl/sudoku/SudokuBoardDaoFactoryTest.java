@@ -10,6 +10,6 @@ public class SudokuBoardDaoFactoryTest {
     public void notNullFactoryTest() {
         SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
         assertNotNull(factory.getFileDao("okon.txt"));
+        assertNotNull(factory.getDatabseDao());
     }
-
 }

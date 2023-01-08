@@ -1,6 +1,7 @@
 package pl.sudoku;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -10,6 +11,7 @@ import pl.sudoku.exception.SudokuFieldWrongNumberException;
 
 public class SudokuField implements Serializable, Comparable<SudokuField>, Cloneable {
     private int value;
+    private final transient ResourceBundle bundle = ResourceBundle.getBundle("Language");
 
 
     public int getFieldValue() {
@@ -20,7 +22,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
         if (value > -1 && value < 10) {
             this.value = value;
         } else {
-            throw new SudokuFieldWrongNumberException("Wartosc powinna byc z zakresu 0-9");
+            throw new SudokuFieldWrongNumberException(bundle.getString("notProperRange"));
         }
     }
 
@@ -62,7 +64,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
                 return -1;
             }
         } catch (NullPointerException e) {
-            throw new SudokuFieldException("obiekt jest nullem", e.getCause());
+            throw new SudokuFieldException(bundle.getString("nullObject"), e.getCause());
         }
 
     }

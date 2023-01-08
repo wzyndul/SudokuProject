@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class deletingFields {
+public class DeletingFields {
     public void removeFields(Level level, SudokuBoard sudokuBoard) {
         int howManyToRemove = 0;
         switch (level) {

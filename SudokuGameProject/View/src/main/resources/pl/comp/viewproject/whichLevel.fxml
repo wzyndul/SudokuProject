@@ -13,25 +13,15 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="buttonMedium" layoutX="240.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToMedium" prefHeight="44.0" prefWidth="120.0" text="%lvlMEDIUM">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonHard" layoutX="430.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" prefHeight="44.0" prefWidth="120.0" text="%lvlHARD">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Label fx:id="chooseLan" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="246.0" prefHeight="30.0" prefWidth="300.0" text="%langName">
+      <Label fx:id="chooseLan" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="198.0" prefHeight="30.0" prefWidth="300.0" text="%langName">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button fx:id="ButtonPolish" layoutX="80.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchToPolish" prefWidth="140.0" text="%plLan">
+      <Button fx:id="ButtonPolish" layoutX="88.0" layoutY="243.0" mnemonicParsing="false" onAction="#switchToPolish" prefWidth="140.0" text="%plLan">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="buttonEnglish" layoutX="380.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchToEnglish" prefWidth="140.0" text="%engLan">
+      <Button fx:id="buttonEnglish" layoutX="380.0" layoutY="243.0" mnemonicParsing="false" onAction="#switchToEnglish" prefWidth="140.0" text="%engLan">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -40,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="loadFILE" layoutX="150.0" layoutY="376.0" mnemonicParsing="false" onAction="#onActionReadFromFile" prefWidth="300.0" text="%buttonLoadFile">
+      <Button fx:id="loadFILE" layoutX="158.0" layoutY="313.0" mnemonicParsing="false" onAction="#onActionReadFromFile" prefWidth="300.0" text="%buttonLoadFile">
          <font>
             <Font size="20.0" />
          </font>
@@ -50,15 +40,30 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="buttonEasy" layoutX="50.0" layoutY="134.0" mnemonicParsing="false" onAction="#switchToEasy" prefHeight="44.0" prefWidth="120.0" text="%lvlEASY">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <TextField fx:id="sudokuDB" layoutX="150.0" layoutY="438.0" prefWidth="300.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
+      <Button layoutX="50.0" layoutY="125.0" mnemonicParsing="false" onAction="#switchToEasy" prefWidth="120.0" text="%lvlEASY">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="240.0" layoutY="125.0" mnemonicParsing="false" onAction="#switchToMedium" prefWidth="120.0" text="%lvlMEDIUM">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="439.0" layoutY="125.0" mnemonicParsing="false" onAction="#switchToHard" prefWidth="120.0" text="%lvlHARD">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="158.0" layoutY="378.0" mnemonicParsing="false" onAction="#onActionDisplayBoards" prefWidth="300.0" text="%buttonShowBoardsInDB">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

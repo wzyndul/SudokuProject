@@ -1,8 +1,5 @@
 package pl.sudoku;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.junit.jupiter.api.Test;
 import pl.sudoku.exception.SudokuStructureException;
 
@@ -11,11 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class SudokuStructureTest {
-    private final Logger log = LoggerFactory.getLogger(SudokuStructureTest.class);
+
     @Test
     public void verifyTest() {
 
-        log.info("logi dzialaja");
         SudokuField[] structure = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
             structure[i] = new SudokuField();

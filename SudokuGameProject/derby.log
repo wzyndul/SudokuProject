@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat Jan 07 14:06:52 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0185-8c57-5785-00000db41368 
+Sun Jan 08 00:41:49 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0185-8e9c-a676-00000cc3e218 
 on database directory C:\DoJavy\repoAtlassian\mka_pn_1400_07\SudokuGameProject\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4783da3f 
 Loaded from file:/C:/Users/Wojciech%20Żyndul/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Oracle Corporation
@@ -12,5 +12,5 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Sat Jan 07 14:06:52 CET 2023:
-Shutting down instance a816c00e-0185-8c57-5785-00000db41368 on database directory C:\DoJavy\repoAtlassian\mka_pn_1400_07\SudokuGameProject\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4783da3f 
+Sun Jan 08 00:41:49 CET 2023:
+Shutting down instance a816c00e-0185-8e9c-a676-00000cc3e218 on database directory C:\DoJavy\repoAtlassian\mka_pn_1400_07\SudokuGameProject\myDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4783da3f 
