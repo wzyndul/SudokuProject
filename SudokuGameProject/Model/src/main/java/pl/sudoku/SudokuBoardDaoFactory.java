@@ -9,12 +9,8 @@ public class SudokuBoardDaoFactory {
         return new FileSudokuBoardDao(fileName);
     }
 
-    public Dao<SudokuBoard> getDatabseDao() {
-        try {
-            return new JdbcSudokuBoardDao();
-        } catch (JdbcException | SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public Dao<SudokuBoard> getDatabseDao() throws SQLException, JdbcException {
+        return new JdbcSudokuBoardDao();
 
+    }
 }

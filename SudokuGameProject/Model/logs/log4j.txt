@@ -1,4 +1,4 @@
-[INFO ] 2023-01-09 10:32:20.344 [main] JdbcSudokuBoardDao - TABELA boards JU¯ ISTNIEJE
-[INFO ] 2023-01-09 10:32:20.398 [main] JdbcSudokuBoardDao - TABELA fields JU¯ ISTNIEJE
-[INFO ] 2023-01-09 10:32:21.084 [main] JdbcSudokuBoardDao - TABELA boards JU¯ ISTNIEJE
-[INFO ] 2023-01-09 10:32:21.197 [main] JdbcSudokuBoardDao - TABELA fields JU¯ ISTNIEJE
+[INFO ] 2023-01-09 11:31:17.799 [main] JdbcSudokuBoardDao - TABELA boards JU¯ ISTNIEJE
+[INFO ] 2023-01-09 11:31:17.867 [main] JdbcSudokuBoardDao - TABELA fields JU¯ ISTNIEJE
+[INFO ] 2023-01-09 11:31:18.589 [main] JdbcSudokuBoardDao - TABELA boards JU¯ ISTNIEJE
+[INFO ] 2023-01-09 11:31:18.620 [main] JdbcSudokuBoardDao - TABELA fields JU¯ ISTNIEJE

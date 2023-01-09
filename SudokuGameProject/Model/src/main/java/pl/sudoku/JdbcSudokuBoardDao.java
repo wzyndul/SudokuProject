@@ -148,58 +148,6 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
         }
     }
 
-    //    public void metodaTestowa() {
-    //        try {
-    //            Statement stmt;
-    //            stmt = conn.createStatement();
-    //            ResultSet results = stmt.executeQuery("select * from " + "boards");
-    //            ResultSetMetaData rsmd = results.getMetaData();
-    //            int numberCols = rsmd.getColumnCount();
-    //            for (int i = 1; i <= numberCols; i++) {
-    //                //print Column Names
-    //                System.out.print(rsmd.getColumnLabel(i) + "\t\t");
-    //            }
-    //
-    //            System.out.println("\n-------------------------------------------------");
-    //
-    //            while (results.next()) {
-    //                int id = results.getInt(1);
-    //                String boardName = results.getString(2);
-    //                System.out.println(id + "\t\t\t\t" + boardName);
-    //            }
-    //            results.close();
-    //            stmt.close();
-    //        } catch (SQLException sqlExcept) {
-    //            sqlExcept.printStackTrace();
-    //        }
-    //    }
-    //
-    //    public void metodaTestowa2() {
-    //        try {
-    //            Statement stmt;
-    //            stmt = conn.createStatement();
-    //            ResultSet results = stmt.executeQuery("select * from " + "boards");
-    //            ResultSetMetaData rsmd = results.getMetaData();
-    //            int numberCols = rsmd.getColumnCount();
-    //            for (int i = 1; i <= numberCols; i++) {
-    //                //print Column Names
-    //                System.out.print(rsmd.getColumnLabel(i) + "\t\t");
-    //            }
-    //
-    //            System.out.println("\n-------------------------------------------------");
-    //
-    //            while (results.next()) {
-    //                int id = results.getInt(1);
-    //                String boardName = results.getString(2);
-    //                System.out.println(id + "\t\t\t\t" + boardName);
-    //            }
-    //            results.close();
-    //            stmt.close();
-    //        } catch (SQLException sqlExcept) {
-    //            sqlExcept.printStackTrace();
-    //        }
-    //    }
-
 
     public ArrayList<String> getBoardsNames() throws JdbcException, SQLException {
         ArrayList<String> names = new ArrayList<>();
