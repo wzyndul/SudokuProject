@@ -3,8 +3,11 @@ package pl.sudoku;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.sudoku.exception.DaoException;
+import pl.sudoku.exception.SudokuBoardException;
 import pl.sudoku.exception.WriteReadException;
 
+
+import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +19,7 @@ public class FileSudokuBoardDaoTest {
     private Dao<SudokuBoard> fileSudokuBoardDao;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -25,7 +28,7 @@ public class FileSudokuBoardDaoTest {
     }
 
     @Test
-    public void writeReadTest() throws DaoException {
+    public void writeReadTest() throws DaoException, SudokuBoardException, SQLException {
 
         fileSudokuBoardDao = factory.getFileDao("new_file.txt");
         fileSudokuBoardDao.write(sudokuBoard);

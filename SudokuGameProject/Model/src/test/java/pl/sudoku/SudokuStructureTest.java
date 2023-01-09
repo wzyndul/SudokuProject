@@ -1,6 +1,7 @@
 package pl.sudoku;
 
 import org.junit.jupiter.api.Test;
+import pl.sudoku.exception.SudokuFieldWrongNumberException;
 import pl.sudoku.exception.SudokuStructureException;
 
 
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SudokuStructureTest {
 
     @Test
-    public void verifyTest() {
+    public void verifyTest() throws SudokuStructureException {
 
         SudokuField[] structure = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
@@ -42,7 +43,7 @@ public class SudokuStructureTest {
 
 
     @Test
-    public void hashCodeAndEqualsTest() {
+    public void hashCodeAndEqualsTest() throws SudokuStructureException {
         SudokuField[] structure = new SudokuField[9];
         SudokuField[] structure2 = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
@@ -85,7 +86,7 @@ public class SudokuStructureTest {
 
 
     @Test
-    public void ToStringTest() {
+    public void ToStringTest() throws SudokuStructureException {
         SudokuField[] structure = new SudokuField[9];
         for (int i = 0; i < 9; i++) {
             structure[i] = new SudokuField();
@@ -99,7 +100,7 @@ public class SudokuStructureTest {
         assertNotEquals(row.toString(), null);
     }
     @Test
-    public void CloneTestStructure() {
+    public void CloneTestStructure() throws SudokuStructureException {
         SudokuField[] structure = new SudokuField[9];
         SudokuField[] structure1 = new SudokuField[9];
         for (int i = 0; i < 9; i++) {

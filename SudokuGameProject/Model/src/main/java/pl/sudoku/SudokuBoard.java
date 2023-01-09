@@ -34,7 +34,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         return x * 9 + y;
     }
 
-    public int get(int x, int y) {
+    public int get(int x, int y) throws SudokuBoardException {
         try {
             return board.get(updateCoordinates(x, y)).getFieldValue();
         } catch (IndexOutOfBoundsException e) {
@@ -42,7 +42,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         }
     }
 
-    public void set(int x, int y, int value) {
+    public void set(int x, int y, int value) throws SudokuBoardException {
         try {
             board.get(updateCoordinates(x, y)).setFieldValue(value);
         } catch (IndexOutOfBoundsException e) {
@@ -50,13 +50,12 @@ public class SudokuBoard implements Serializable, Cloneable {
         }
     }
 
-    public void solveGame() {
+    public void solveGame() throws SudokuBoardException {
         sudokuSolver.solve(this);
-        checkBoard();         //w przyszlsoci mozemy dodac tutaj jakies sprawdzenie
-        //czy wszystko jest ok (ale zawsze bedzie) bo solve poprawnie wypelnia
+        checkBoard();
     }
 
-    public SudokuRow getRow(int y) {
+    public SudokuRow getRow(int y) throws SudokuBoardException {
         try {
             SudokuField[] table = new SudokuField[9];
             for (int i = 0; i < 9; i++) {
@@ -69,7 +68,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         }
     }
 
-    public SudokuColumn getColumn(int x) {
+    public SudokuColumn getColumn(int x) throws SudokuBoardException {
         try {
             SudokuField[] table = new SudokuField[9];
             for (int i = 0; i < 9; i++) {
@@ -82,7 +81,7 @@ public class SudokuBoard implements Serializable, Cloneable {
         }
     }
 
-    public SudokuBox getBox(int x, int y) {
+    public SudokuBox getBox(int x, int y) throws SudokuBoardException {
         try {
             SudokuField[] table = new SudokuField[9];
             int rowStart = x - x % 3;
@@ -104,7 +103,7 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     }
 
-    private boolean checkBoard() {
+    private boolean checkBoard() throws SudokuBoardException {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < 9; i++) {
@@ -175,8 +174,12 @@ public class SudokuBoard implements Serializable, Cloneable {
             }
             return sudokuBoard;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException
-                 | IllegalAccessException | InvocationTargetException e) {
-            throw new SudokuBoardException(bundle.getString("cloneError"), e);
+                 | IllegalAccessException | InvocationTargetException | SudokuBoardException e) {
+            try {
+                throw new SudokuBoardException(bundle.getString("cloneError"), e);
+            } catch (SudokuBoardException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

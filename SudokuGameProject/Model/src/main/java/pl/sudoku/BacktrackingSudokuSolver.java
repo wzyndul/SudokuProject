@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import pl.sudoku.exception.SudokuBoardException;
 
 
 public class BacktrackingSudokuSolver implements SudokuSolver {
@@ -13,12 +14,12 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
 
 
     @Override
-    public void solve(SudokuBoard board) {
+    public void solve(SudokuBoard board) throws SudokuBoardException {
         clear(board);
         fillSudoku(0, 0, board);
     }
 
-    private void clear(SudokuBoard board) {
+    private void clear(SudokuBoard board) throws SudokuBoardException {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 board.set(i, j, 0);
@@ -26,7 +27,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         }
     }
 
-    private boolean checkRow(int row, int number, SudokuBoard board) {
+    private boolean checkRow(int row, int number, SudokuBoard board) throws SudokuBoardException {
         for (int i = 0; i < size; i++) {
             if (board.get(row, i) == number) {
                 return false;
@@ -35,7 +36,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         return true;
     }
 
-    private boolean checkCol(int col, int number, SudokuBoard board) {
+    private boolean checkCol(int col, int number, SudokuBoard board) throws SudokuBoardException {
         for (int i = 0; i < size; i++) {
             if (board.get(i, col) == number) {
                 return false;
@@ -44,7 +45,8 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         return true;
     }
 
-    private boolean checkBox(int row, int col, int number, SudokuBoard board) {
+    private boolean checkBox(int row, int col, int number, SudokuBoard board)
+            throws SudokuBoardException {
         int rowStart = row - row % 3;
         int colStart = col - col % 3;
         for (int i = 0; i < 3; i++) {
@@ -68,7 +70,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         return list;
     }
 
-    private boolean fillSudoku(int i, int j, SudokuBoard board) {
+    private boolean fillSudoku(int i, int j, SudokuBoard board) throws SudokuBoardException {
         if (j == size && i == size - 1) {
             return true;
         }

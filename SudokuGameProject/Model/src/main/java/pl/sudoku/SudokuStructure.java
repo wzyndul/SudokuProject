@@ -14,7 +14,7 @@ public abstract class SudokuStructure {
     private List<SudokuField> structure;
     private final  ResourceBundle bundle = ResourceBundle.getBundle("Language");
 
-    public SudokuStructure(SudokuField[] fields) {
+    public SudokuStructure(SudokuField[] fields) throws SudokuStructureException {
         try {
             this.structure = Arrays.asList(fields);
         } catch (NullPointerException e) {

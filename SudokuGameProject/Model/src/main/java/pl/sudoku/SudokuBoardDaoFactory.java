@@ -1,6 +1,8 @@
 package pl.sudoku;
 
+import java.sql.SQLException;
 import pl.sudoku.exception.JdbcException;
+
 
 public class SudokuBoardDaoFactory {
     public Dao<SudokuBoard> getFileDao(String fileName) {
@@ -10,7 +12,7 @@ public class SudokuBoardDaoFactory {
     public Dao<SudokuBoard> getDatabseDao() {
         try {
             return new JdbcSudokuBoardDao();
-        } catch (JdbcException e) {
+        } catch (JdbcException | SQLException e) {
             throw new RuntimeException(e);
         }
     }

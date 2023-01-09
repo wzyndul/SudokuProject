@@ -18,7 +18,7 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
         return value;
     }
 
-    public void setFieldValue(int value) {
+    public void setFieldValue(int value) throws SudokuFieldWrongNumberException {
         if (value > -1 && value < 10) {
             this.value = value;
         } else {
@@ -64,7 +64,11 @@ public class SudokuField implements Serializable, Comparable<SudokuField>, Clone
                 return -1;
             }
         } catch (NullPointerException e) {
-            throw new SudokuFieldException(bundle.getString("nullObject"), e.getCause());
+            try {
+                throw new SudokuFieldException(bundle.getString("nullObject"), e.getCause());
+            } catch (SudokuFieldException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
     }

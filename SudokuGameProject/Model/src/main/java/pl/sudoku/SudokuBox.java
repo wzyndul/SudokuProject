@@ -1,7 +1,10 @@
 package pl.sudoku;
 
+import pl.sudoku.exception.SudokuFieldWrongNumberException;
+import pl.sudoku.exception.SudokuStructureException;
+
 public class SudokuBox extends SudokuStructure implements Cloneable {
-    public SudokuBox(SudokuField[] fields) {
+    public SudokuBox(SudokuField[] fields) throws SudokuStructureException {
         super(fields);
     }
 
@@ -10,9 +13,17 @@ public class SudokuBox extends SudokuStructure implements Cloneable {
         SudokuField[] table = new SudokuField[getAll().size()];
         for (int i = 0; i < getAll().size(); i++) {
             table[i] = new SudokuField();
-            table[i].setFieldValue(getAll().get(i).getFieldValue());
+            try {
+                table[i].setFieldValue(getAll().get(i).getFieldValue());
+            } catch (SudokuFieldWrongNumberException e) {
+                throw new RuntimeException(e);
+            }
         }
-        return new SudokuBox(table);
+        try {
+            return new SudokuBox(table);
+        } catch (SudokuStructureException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

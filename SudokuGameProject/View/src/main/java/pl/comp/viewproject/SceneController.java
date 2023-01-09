@@ -11,10 +11,12 @@ import pl.sudoku.Dao;
 import pl.sudoku.JdbcSudokuBoardDao;
 import pl.sudoku.SudokuBoard;
 import pl.sudoku.SudokuBoardDaoFactory;
+import pl.sudoku.exception.DaoException;
 import pl.sudoku.exception.GuiException;
 import pl.sudoku.exception.JdbcException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -126,7 +128,7 @@ public class SceneController {
             fileSudokuBoardDao = factory.getFileDao(filename);
             sudokuBoardFromFile = fileSudokuBoardDao.read();
             StageSetup.buildStage("game.fxml", bundle);
-        } catch (NullPointerException | IOException e) {
+        } catch (NullPointerException | IOException | DaoException | SQLException e) {
             throw new GuiException(e);
         }
     }

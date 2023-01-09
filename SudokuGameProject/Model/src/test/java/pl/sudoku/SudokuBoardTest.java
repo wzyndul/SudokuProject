@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SudokuBoardTest {
 
     @Test
-    public void getSetMethodsTest() {
+    public void getSetMethodsTest() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.set(0, 0, 9);
@@ -32,7 +32,7 @@ public class SudokuBoardTest {
 
 
     @Test
-    public void differentNumbers() {
+    public void differentNumbers() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -55,7 +55,7 @@ public class SudokuBoardTest {
     }
 
     @Test
-    public void checkBoardTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void checkBoardTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -79,7 +79,7 @@ public class SudokuBoardTest {
 
 
     @Test
-    public void equalsAndHashCodeTest() {
+    public void equalsAndHashCodeTest() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         BacktrackingSudokuSolver backtrackingSudokuSolver1 = new BacktrackingSudokuSolver();
 
@@ -113,7 +113,7 @@ public class SudokuBoardTest {
     }
 
     @Test
-    public void toStringTest() {
+    public void toStringTest() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -121,7 +121,7 @@ public class SudokuBoardTest {
     }
 
     @Test
-    public void cloneTest() {  // nie sa przetestowane tamte wyjatki
+    public void cloneTest() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();
@@ -135,7 +135,7 @@ public class SudokuBoardTest {
 
     }
     @Test
-    public void getRowBoxColumnExceptionTest() {
+    public void getRowBoxColumnExceptionTest() throws SudokuBoardException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuBoard sudokuBoard = new SudokuBoard(backtrackingSudokuSolver);
         sudokuBoard.solveGame();

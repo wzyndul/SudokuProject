@@ -3,6 +3,7 @@ package pl.sudoku;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.sudoku.exception.JdbcException;
+import pl.sudoku.exception.SudokuBoardException;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -20,7 +21,7 @@ public class JdbcSudokuBoardDaoTest {
     private SudokuBoardDaoFactory sudokuBoardDaoFactory;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws SudokuBoardException {
         sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard1 = new SudokuBoard(new BacktrackingSudokuSolver());
         sudokuBoard.solveGame();

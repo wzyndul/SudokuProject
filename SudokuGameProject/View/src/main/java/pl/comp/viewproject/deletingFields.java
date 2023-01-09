@@ -1,12 +1,14 @@
 package pl.comp.viewproject;
 
 import pl.sudoku.SudokuBoard;
+import pl.sudoku.exception.SudokuBoardException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 
 public class DeletingFields {
-    public void removeFields(Level level, SudokuBoard sudokuBoard) {
+    public void removeFields(Level level, SudokuBoard sudokuBoard) throws SudokuBoardException {
         int howManyToRemove = 0;
         switch (level) {
             case EASY: {

@@ -1,6 +1,7 @@
 package pl.comp.viewproject;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -10,10 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import pl.sudoku.*;
-import pl.sudoku.exception.DaoException;
-import pl.sudoku.exception.GuiException;
-import pl.sudoku.exception.JdbcException;
-import pl.sudoku.exception.WriteReadException;
+import pl.sudoku.exception.*;
 
 public class GameController {
     @FXML
@@ -31,7 +29,7 @@ public class GameController {
     private TextField saveToDBname;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SudokuBoardException {
         if (SceneController.isFromOutside() == false) {
             sudokuBoard.solveGame();
             deletingFields.removeFields(SceneController.getLevel(), sudokuBoard);
@@ -41,7 +39,7 @@ public class GameController {
         fillGridToPlay();
     }
 
-    private void fillGridToPlay() {
+    private void fillGridToPlay() throws SudokuBoardException {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 TextField textField = new TextField();
@@ -55,7 +53,11 @@ public class GameController {
                     int finalI = i;
                     textField.textProperty().addListener((observable, oldValue, newValue) -> {
                         if (newValue.length() == 1 && newValue.matches("[1-9]")) {
-                            sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue)); //popraw
+                            try {
+                                sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue)); //popraw
+                            } catch (SudokuBoardException e) {
+                                throw new RuntimeException(e);
+                            }
                         } else {
                             textField.setText("");
                         }
@@ -72,7 +74,7 @@ public class GameController {
         StageSetup.buildStage("whichLevel.fxml", bundle);
     }
 
-    public void onActionSaveToFile(ActionEvent actionEvent) throws DaoException {
+    public void onActionSaveToFile(ActionEvent actionEvent) throws DaoException, SQLException {
         fileChooser = new FileChooser();
         File file;
         try {
@@ -85,7 +87,7 @@ public class GameController {
 
     }
 
-    public void onActionSaveToDB(ActionEvent actionEvent) throws JdbcException {
+    public void onActionSaveToDB(ActionEvent actionEvent) throws JdbcException, SQLException {
         String name = saveToDBname.getText();
         try (JdbcSudokuBoardDao jdbcSudokuBoardDao = (JdbcSudokuBoardDao) factory.getDatabseDao()) {
 

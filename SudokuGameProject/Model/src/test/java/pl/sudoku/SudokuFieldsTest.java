@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SudokuFieldsTest {
 
     @Test
-    public void setGetFieldValueTest() {
+    public void setGetFieldValueTest() throws SudokuFieldWrongNumberException {
         SudokuField sudokufield = new SudokuField();
         sudokufield.setFieldValue(8);
         assertEquals(sudokufield.getFieldValue(), 8);
@@ -24,7 +24,7 @@ public class SudokuFieldsTest {
 
 
     @Test
-    public void HashCodeAndEqualsTest() {
+    public void HashCodeAndEqualsTest() throws SudokuFieldWrongNumberException {
         BacktrackingSudokuSolver backtrackingSudokuSolver = new BacktrackingSudokuSolver();
         SudokuField a = new SudokuField();
         SudokuField b = new SudokuField();
@@ -55,7 +55,7 @@ public class SudokuFieldsTest {
     }
 
     @Test
-    public void CloneTestField() throws CloneNotSupportedException {
+    public void CloneTestField() throws CloneNotSupportedException, SudokuFieldWrongNumberException {
         SudokuField field = new SudokuField();
         field.setFieldValue(2);
         SudokuField copiedField = field.clone();
@@ -70,7 +70,7 @@ public class SudokuFieldsTest {
     }
 
     @Test
-    public void compareToTest() {
+    public void compareToTest() throws SudokuFieldWrongNumberException {
         SudokuField field1 = new SudokuField();
         SudokuField field2 = new SudokuField();
         field1.setFieldValue(1);
@@ -79,7 +79,7 @@ public class SudokuFieldsTest {
         assertTrue(field2.compareTo(field1) > 0);
         field2.setFieldValue(1);
         assertEquals(field1.compareTo(field2), 0);
-        assertThrows(SudokuFieldException.class, () -> {
+        assertThrows(RuntimeException.class, () -> {
             field1.compareTo(null);
         });
     }
