@@ -38,6 +38,16 @@ public class GameController {
         }
         fillGridToPlay();
     }
+    private boolean isSolved() throws SudokuBoardException {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (sudokuBoard.get(i, j) == 0) {
+                    return false; // if any cell is empty, the puzzle is not solved
+                }
+            }
+        }
+        return sudokuBoard.checkBoard(); // check if the board is valid
+    }
 
     private void fillGridToPlay() throws SudokuBoardException {
         for (int i = 0; i < 9; i++) {
@@ -55,6 +65,13 @@ public class GameController {
                         if (newValue.length() == 1 && newValue.matches("[1-9]")) {
                             try {
                                 sudokuBoard.set(finalI, finalJ, Integer.parseInt(newValue)); //popraw
+                            } catch (SudokuBoardException e) {
+                                throw new RuntimeException(e);
+                            }
+                            try {
+                                if (isSolved()) {
+                                    displayingMessage.showMassage(bundle.getString("gameWon"));
+                                }
                             } catch (SudokuBoardException e) {
                                 throw new RuntimeException(e);
                             }

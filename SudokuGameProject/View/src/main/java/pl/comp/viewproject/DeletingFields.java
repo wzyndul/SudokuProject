@@ -12,7 +12,7 @@ public class DeletingFields {
         int howManyToRemove = 0;
         switch (level) {
             case EASY: {
-                howManyToRemove = 20;
+                howManyToRemove = 2;
                 break;
             }
             case MEDIUM: {

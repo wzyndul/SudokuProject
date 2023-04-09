@@ -103,7 +103,7 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     }
 
-    private boolean checkBoard() throws SudokuBoardException {
+    public boolean checkBoard() throws SudokuBoardException {
         int rowBox = 0;
         int colBox = 0;
         for (int i = 0; i < 9; i++) {
